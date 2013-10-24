@@ -12,6 +12,6 @@ Project goals:
 Branches:
 * original -- state of original project on 24 october 2013: version 0.2.5, which was released in 2008
 * translation -- make english translation default and add russion translation
-* q5 -- possible to build with Qt5
+* qt5 -- possible to build with Qt5
 * xdg -- storage configuration in standard directories
 * master -- current state of the project
