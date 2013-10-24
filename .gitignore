@@ -1,0 +1,9 @@
+ui_*.h
+moc_*.cpp
+*.pro.user
+*.o
+*.out
+*.exe
+MyDreamDiary
+Makefile
+profiles/
