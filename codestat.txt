@@ -1,0 +1,239 @@
+File              = aboutDialog.cpp
+Empty Lines       = 5
+Comments          = 19
+Embedded Comments = 0
+Code              = 18
+Total Lines       = 42
+
+File              = findDialog.cpp
+Empty Lines       = 8
+Comments          = 19
+Embedded Comments = 0
+Code              = 27
+Total Lines       = 54
+
+File              = fromKeyDialog.cpp
+Empty Lines       = 8
+Comments          = 19
+Embedded Comments = 0
+Code              = 38
+Total Lines       = 65
+
+File              = ftpDialog.cpp
+Empty Lines       = 31
+Comments          = 22
+Embedded Comments = 0
+Code              = 240
+Total Lines       = 293
+
+File              = ignoredDialog.cpp
+Empty Lines       = 7
+Comments          = 19
+Embedded Comments = 0
+Code              = 53
+Total Lines       = 79
+
+File              = loginDialog.cpp
+Empty Lines       = 22
+Comments          = 33
+Embedded Comments = 1
+Code              = 133
+Total Lines       = 188
+
+File              = main.cpp
+Empty Lines       = 6
+Comments          = 19
+Embedded Comments = 0
+Code              = 35
+Total Lines       = 60
+
+File              = MainForm.cpp
+Empty Lines       = 208
+Comments          = 139
+Embedded Comments = 1
+Code              = 1736
+Total Lines       = 2083
+
+File              = MyDreamBase.cpp
+Empty Lines       = 181
+Comments          = 85
+Embedded Comments = 21
+Code              = 1134
+Total Lines       = 1400
+
+File              = newDialog.cpp
+Empty Lines       = 12
+Comments          = 48
+Embedded Comments = 8
+Code              = 99
+Total Lines       = 159
+
+File              = replaceDialog.cpp
+Empty Lines       = 4
+Comments          = 19
+Embedded Comments = 0
+Code              = 41
+Total Lines       = 64
+
+File              = settingsDialog.cpp
+Empty Lines       = 29
+Comments          = 36
+Embedded Comments = 0
+Code              = 277
+Total Lines       = 342
+
+File              = statDialog.cpp
+Empty Lines       = 56
+Comments          = 56
+Embedded Comments = 14
+Code              = 303
+Total Lines       = 415
+
+File              = symbolDialog.cpp
+Empty Lines       = 50
+Comments          = 23
+Embedded Comments = 0
+Code              = 310
+Total Lines       = 383
+
+File              = vigcryp.cpp
+Empty Lines       = 15
+Comments          = 21
+Embedded Comments = 6
+Code              = 82
+Total Lines       = 118
+
+File              = xconfig.cpp
+Empty Lines       = 89
+Comments          = 10
+Embedded Comments = 3
+Code              = 634
+Total Lines       = 733
+
+File              = aboutDialog.h
+Empty Lines       = 8
+Comments          = 19
+Embedded Comments = 0
+Code              = 17
+Total Lines       = 44
+
+File              = findDialog.h
+Empty Lines       = 8
+Comments          = 19
+Embedded Comments = 0
+Code              = 18
+Total Lines       = 45
+
+File              = fromKeyDialog.h
+Empty Lines       = 7
+Comments          = 19
+Embedded Comments = 0
+Code              = 19
+Total Lines       = 45
+
+File              = ftpDialog.h
+Empty Lines       = 8
+Comments          = 19
+Embedded Comments = 0
+Code              = 30
+Total Lines       = 57
+
+File              = ignoredDialog.h
+Empty Lines       = 7
+Comments          = 19
+Embedded Comments = 0
+Code              = 20
+Total Lines       = 46
+
+File              = loginDialog.h
+Empty Lines       = 8
+Comments          = 19
+Embedded Comments = 0
+Code              = 28
+Total Lines       = 55
+
+File              = MainForm.h
+Empty Lines       = 13
+Comments          = 26
+Embedded Comments = 5
+Code              = 189
+Total Lines       = 228
+
+File              = MyDreamBase.h
+Empty Lines       = 12
+Comments          = 21
+Embedded Comments = 35
+Code              = 124
+Total Lines       = 157
+
+File              = newDialog.h
+Empty Lines       = 6
+Comments          = 19
+Embedded Comments = 0
+Code              = 20
+Total Lines       = 45
+
+File              = replaceDialog.h
+Empty Lines       = 8
+Comments          = 19
+Embedded Comments = 0
+Code              = 18
+Total Lines       = 45
+
+File              = settingsDialog.h
+Empty Lines       = 8
+Comments          = 19
+Embedded Comments = 1
+Code              = 32
+Total Lines       = 59
+
+File              = statDialog.h
+Empty Lines       = 8
+Comments          = 19
+Embedded Comments = 0
+Code              = 35
+Total Lines       = 62
+
+File              = symbolDialog.h
+Empty Lines       = 8
+Comments          = 19
+Embedded Comments = 0
+Code              = 38
+Total Lines       = 65
+
+File              = vigcryp.h
+Empty Lines       = 4
+Comments          = 19
+Embedded Comments = 0
+Code              = 13
+Total Lines       = 36
+
+File              = xconfig.h
+Empty Lines       = 9
+Comments          = 1
+Embedded Comments = 1
+Code              = 79
+Total Lines       = 89
+
+File              = icon.rc
+Empty Lines       = 0
+Comments          = 0
+Embedded Comments = 0
+Code              = 1
+Total Lines       = 1
+
+File              = format.sh
+Empty Lines       = 0
+Comments          = 0
+Embedded Comments = 0
+Code              = 3
+Total Lines       = 3
+
+=============================================
+Cumulative stats
+Total Empty Lines        = 853
+Total Full Line Comments = 863
+Total Embedded Comments  = 96
+Total Code               = 5844
+Total Lines              = 7560
+Total Files              = 33

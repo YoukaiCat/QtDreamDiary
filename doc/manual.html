@@ -1,0 +1,262 @@
+<html>
+  <head>
+    <title>My Dream Diary user's manual</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf8" />
+  </head>
+  <body leftmargin="200" rightmargin="200" topmargin="100" bottommargin="100" bgcolor="#f1efd7">
+  <center> <h2>My Dream Diary - user's manual </h2> </center>
+  <br/>
+  <center>Ten program rozprowadzany jest na licencji
+  <a target="_blank" href="http://www.gnu.org/licenses/gpl-3.0.txt"> GNU General Public License.</a></center> <br/>
+  <br/>
+  <hr/>
+  <br/>
+
+<a href=#wymagania >1. Wymagania </a><br/>
+<a href=#statystyki >2. Prowadzenie statystyk </a><br/>
+<a href=#archiwizacja >3. Archiwizacja </a><br/>
+&nbsp <a href=#plik >3.1 Eksport/import do pliku </a><br/>
+&nbsp <a href=#stare >3.2 Import archiwum ze starszych wersji </a><br/>
+&nbsp <a href=#ftp >3.3 Eksport/import z serwera FTP </a><br/>
+&nbsp <a href=#slownik >3.4 Eksport/import słownika </a><br/>
+<a href=#wzorce >4. Wzorce </a><br/>
+<a href=#znaki >5. Znaki snu (klucze) </a><br/>
+<a href=#sugestie >6. Czym są sugestie? </a><br/>
+<a href=#skroty >7. Skróty klawiszowe </a><br/>
+<a href=#web >8. Sprawdzanie znaczeń w internecie </a><br/>
+<a href=#ikony >9. Zestawy ikon </a><br/>
+  <br/>
+  <hr/>
+  <br/>
+    My Dream Diary to komputerowy dziennik służący do tworzenia i zarządzania
+opisami snów. Do podstawowych funkcji programu należy zabezpieczenie danych hasłem, 
+archiwizowanie, prowadzenie statystyk oraz dodawanie znaków snu. Wbudowany słownik symboli
+pozwala stworzyć własną listę definicji, lub za pomocą przeglądarki sprawdzić znaczenie 
+znaku snu w internecie.
+<br/>
+  <p>
+  <a name="wymagania"/>
+  <h4> Wymagania </h4>
+Aby móc korzystać z programu My Dream Diary, system musi być wyposażony w
+biblioteki QT w wersji 4.3.0 lub nowsze. Jeśli posiadasz starsze wersje,
+konieczna będzie aktualizacja. Program portowany jest na systemy z rodziny
+GNU/Linux oraz Windows, w przyszłości może także i MacOS. Większość paczek
+dla Windows zawiera już potrzebne pliki, użytkownicy Linux muszą mieć
+zainstalowane biblioteki 'libqt4-core' i 'libqt4-gui'. Aby własnoręcznie 
+przeprowadzić kompilację, wymagane są biblioteki:<br/><br/>
+libqt4-core<br/>
+libqt4-dev<br/>
+libqt4-gui<br/>
+libqt4-network<br/>
+libqt4-qt3support<br/>
+libqt4-xml<br/>
+libqtcore4<br/>
+libqtgui4<br/>
+  
+  </p>
+ 
+   <p>
+  <a name="statystyki"/>
+  <h4> Prowadzenie statystyk </h4>
+
+Oprócz standardowych pól, okno główne programu posiada pola zatytułowane
+"godzina zaśnięcia", "godzina przebudzenia" oraz "ocena". Nie
+są one wymagane, jednak ich wypełnianie pozwala na prowadzenie statystyk.
+Podstawowe statystyki dostępne są po wypełnieniu ww. pól w przynajmniej
+jednym dokumencie. Wykres porównujący czas snu (czerwona krzywa) i wysokość
+ocen (zielona krzywa) zawiera dane dotyczące dokumentów z 7 ostatnich dni.
+Miejsce przecięcia linii przerywanych, wyznacza najbardziej efektywny czas
+snu. W przypadku gdy w jednej dacie znajduje się więcej niż jeden dokument,
+pod uwagę brany jest dokument z wyższą oceną. Daty bez ocenionych dokumentów
+nie są wliczane do statystyki tygodniowej.<br/>
+Od wersji 0.2.2 możliwy jest podgląd w postaci zestawienia. Zestawienie
+szczegółowe widoczne jest po kliknięciu przycisku 'Pokaż zestawienie
+szczegółowe'.
+  
+  </p>
+ 
+    <p>
+  <a name="archiwizacja"/>
+  <h4> Archiwizacja </h4>
+
+Nota: Oferowana przez program My Dream Diary opcja szyfrowania dokumentów nie daje
+pełnej gwarancji bezpieczeństwa. Powstała ona w celu utrudnienia bezpośredniego dostępu 
+do plików osobom niepowołanym.
+<a name="plik"/>
+<h5> Eksport/import do pliku </h5>
+
+Aby uniknąć utraty danych i zbędnego przenoszenia całej bazy dokumentów,
+istnieje możliwość zapisu archiwum do pliku (plik->eksport archiwum->do
+pliku...). Wyeksportowany plik archiwum zawiera dokumenty, klucze,
+oraz listę wyrażeń ignorowanych (dot. sugestii). Ważne: Plik archiwum
+powstały w wyniku eksportu NIE jest szyfrowany nawet gdy opcja szyfrowania
+jest włączona. Nie zawiera też żadnych danych dotyczących słownika symboli
+oraz konfiguracji programu. Import archiwum umożliwia wywołanie akcji
+"Plik->Import archiwum->Z pliku..."
+<a name="stare"/>
+<h5> Import archiwum ze starszych wersji </h5>
+
+Jeśli korzystałeś z wersji My Dream Diary starszej niż 0.1.9, możesz przenieść
+archiwum do nowej wersji wykonując następujące czynności:<br/><br/>
+
+- wyeksportuj archiwum w starej wersji programu podejmując akcję
+  "Plik->Eksport archiwum->do pliku..."<br/>
+- powstałemu plikowi nadaj rozszerzenie .drm<br/>
+- w nowej wersji programu wybierz akcję "Plik->Import archiwum->Z pliku *.drm" i
+  wybierz wcześniej utworzony plik.<br/><br/>
+
+Uwaga<br/>
+I. Ze względu na brak technicznej możliwości integracji dokumentów z nowych i starych
+wersji, mogą wystąpić pewne niedogodności. Wersje < 0.1.9 nie umożliwiały zliczania
+częstotliwości występowania kluczy, a co za tym idzie podziału na klucze bazowe i
+pochodne (synonimy). Po imporcie ze starszych wersji wszystkie wczytane znaki snu będą tworzyły
+nowe klucze bazowe.<br/>
+II. Wszystkie dokumenty importowane ze starej wersji oznaczone są jako nieświadome.
+<a name="ftp"/>
+<h5> Eksport/import z serwera FTP </h5>
+
+Oprócz eksportu archiwum na lokalny dysk, program oferuje także możliwość wysłania
+kopii zapasowej na wskazany serwer FTP. Aby wykonać taką operację, wymagane jest
+podanie:<br/>
+- adresu serwera (np ftp.host.pl)<br/>
+- nazwy użytkownika konta ftp<br/>
+- hasła (jeśli konto tego wymaga)<br/>
+- nazwy pliku archiwum (domyślnie jest to nazwa użytkownika z rozszerzeniem mdd)
+Nazwa bazy podczas importu musi zgadzać się z nazwą pliku eksportowanego (chyba, ze została
+ona zmieniona ręcznie na serwerze). Eksportowany plik nie jest szyfrowany.
+<a name="slownik"/>
+<h5> Eksport/import słownika </h5>
+
+Ponieważ eksport archiwum nie obejmuje symboli zapisanych w słowniku, należy je archiwizować
+osobno. Do zapisu symboli do pliku należy użyć przycisku "Eksport bazy", znajdującego się w oknie
+słownika. Podobnie jak w przypadku archiwum, symbole zapisane za pomocą funkcji eksportu nie są
+w żaden sposób szyfrowane. Analogicznie import odbywa się przez akcję pod przyciskiem "Import bazy".
+Wersje starsze niż 0.2.0 nie posiadały możliwości eksportu, jednak można przenieść symbole importując
+plik słownika z katalogu 'profiles/nazwa_użytkownika/nazwa_użytkownika.sym'. PRZED IMPORTEM SYMBOLI ZE STARSZYCH WERSJI NALEŻY WYŁĄCZYĆ SZYFROWANIE. Konwersja ze starego typu na nowy odbywa się automatycznie. 
+
+  </p>
+  
+     <p>
+<a name="wzorce"/>
+<h4>Wzorce</h4>
+Istnieje możliwość zapisu dowolnego dokumentu do pliku html sformatowanego wg podanego wzorca.
+Wzorzec wybieramy za pomocą akcji "Profil->Wczytaj wzorzec". W przypadku, kiedy użytkownik nie
+wybierze pliku z kodem służącym za wzór, zostanie wygenerowany domyślny plik. Treść takiego pliku
+to zwykły kod, którego poszczególne elementy zostały zastąpione określonymi znacznikami.
+Lista znaczników dostępnych w wersji 0.2.4:<br/><br/>
+<pre>
+#title#		- tytuł dokumentu
+#date#		- data dokumentu
+#asleep#	- godzina zaśnięcia
+#wakeup#	- godzina przebudzenia
+#score#		- ocena pamięci
+#coment#	- komentarz
+#content#	- treść dokumentu
+
+</pre>
+Wzorzec nie musi być w rzeczywistości dokumentem html, może to być zwykły plik tekstowy z odpowiednimi
+znacznikami. Przykład:<br/><br/>
+
+#title# (#date#)<br/>
+czas snu: od #asleep# do #wakeup#<br/>
+-------------------------<br/>
+#content#<br/>
+
+
+  
+  </p>
+  
+     <p>
+  <a name="znaki"/>
+  <h4>Znaki snu</h4>
+
+Znaki snu, czyli tzw klucze snu, to rzeczy/osoby/zjawiska/sytuacje wskazujące na fakt, ze
+otaczający świat jest światem snu. Służą one głównie osobom śniącym świadomie do szybkiego
+rozpoznawania stanu snu. Program My Dream Diary udostępnia tworzenie listy takich kluczy.
+Każde wyrażenie oznaczone jako klucz, jest automatycznie podświetlane w treści wszystkich
+dokumentów w celu natychmiastowego zwrócenia uwagi i zapamiętania tego wyrażenia. Wszystkie
+znaki snu występujące w treści danego dokumentu są wymienione w polu "Występujące klucze".
+Poniżej drzewa archiwum znajduje się drzewo wszystkich kluczy, domyślnie uporządkowanych
+wg ilości wystąpień w bazie snów. Od wersji 0.2.2 istnieje podział na klucze bazowe oraz
+klucze pochodne (synonimy). Klucze pochodne to wyrażenia, które są traktowane przez program
+w sposób identyczny jak klucz bazowy do którego są przypisane. Podczas procedury zliczania ilości
+wystąpień, wystąpienie klucza pochodnego jest równoznaczne z wystąpieniem klucza bazowego.
+Synonimami są wyrażenia powiązane z kluczem, np. imię, nazwisko i pseudonim(y) pewnej osoby, lub
+wiele odmian jednego wyrazu. Możliwe jest także 'wspomaganie' kluczy w postaci sugestii, więcej
+w rozdziale 'czym są sugestie?'.
+  
+  </p>
+  
+     <p>
+  <a name="sugestie"/>
+  <h4> Czym są sugestie?</h4>
+
+Klucze snu mogą być uzupełniane przez program tzw. 'sugestiami'. Jeżeli w ustawieniach zaznaczyłeś 
+opcje 'Włącz system sugestii", to podczas uruchamiania programu oraz przy każdym zapisie będzie
+uruchamiany mechanizm zwany 'skanerem sugestii' (pracuje on w tle i nie spowalnia pracy programu).
+Jego zadanie polega na wyszukaniu wśród treści dokumentów powtarzających się wyrażeń. Jeśli
+takie wyrażenie zostanie wychwycone, użytkownik zostanie o tym powiadomiony w postaci komunikatu.
+Średnio 1 sugestia na 10 jest trafiona, dlatego aby uniknąć ciągłego odrzucania tych samych wyrażeń,
+można umieścić je na liście wyrażeń ignorowanych. Można to zrobić po kliknięciu w komunikat informujący o jego znalezieniu lub poprzez akcje "Profil->Sugestie->Lista ignorowanych". Do konfiguracji skanera sugestii służą następujące ustawienia:<br/><br/>
+
+zakres poszukiwań - wyznacza datę, poniżej której dane będą ignorowane, dostępne opcje to
+"Ostatni miesiąc", "Ostatni tydzień", "Brak ograniczenia"<br/><br/>
+przetwarzanie wyrażeń dwuwyrazowych - określa czy przy przeszukiwaniu program ma brać pod uwagę wyrażenia
+składające się z dwóch wyrazów.<br/><br/>
+ignorowana długość - określa minimalną długość wyrażenia, które kwalifikuje się do zasugerowania.<br/><br/>
+czułość - określa ilość dokumentów w których musi wystąpić wyrażenie aby stało się sugestią.
+  
+  </p>
+  
+     <p>
+  <a name="skroty"/>
+  <h4> Skróty klawiszowe </h4>
+<pre>
+Ctrl + F	- wyszukiwarka wyrażeń regularnych
+Ctrl + R	- narzędzie zamiany wyrażeń regularnych
+Ctrl + S	- zapis bieżącego dokumentu
+Ctrl + N	- tworzy nowy dokument
+Ctrl + Q	- zamyka aplikacje
+Ctrl + H	- pokazuje/ukrywa dodatkowe kolumny
+Delete (przy zaznaczonym kluczu)	- usuwa klucz
+Delete (przy zaznaczonym dokumencie)	- usuwa dokument
+</pre>
+  </p>
+  
+     <p>
+  <a name="web"/>
+  <h4> Sprawdzanie znaczeń w internecie </h4>
+
+Po zaznaczeniu słowa w treści dokumentu, w menu kontekstowym (prawy przycisk myszy)
+uaktywnia się opcja 'Sprawdź znaczenie'. Polega ona na uruchomieniu zdefiniowanej
+przeglądarki ze stroną opisującą wybrany symbol. Aby poprawnie skonfigurować tę opcję,
+trzeba zdefiniować przeglądarke w oknie ustawień oraz wybrać właściwy adres strony. Adres strony
+musi zawierać znacznik '#exp#', który zostanie zastąpiony przez zaznaczony wyraz.
+Należy zauważyć ze zaznaczony tekst nie może zawierać spacji ani polskich znaków diakrytycznych
+i że nie wszystkie strony z sennikami mogą być użyte.<br/>
+Domyślny adres to http://www.sennik.biz/?s=#exp#
+  
+  </p>
+  
+     <p>
+  <a name="ikony"/>
+  <h4> Zestawy ikon </h4>
+
+Domyślnym zestawem ikon jest zestaw Oxygen zaczerpnięty ze środowiska KDE4, zmiany można dokonać
+w oknie ustawień, w sekcji 'wygląd i zachowanie'. Możliwe jest dodawanie innych zestawów niż istniejące. Aby dodać własny zestaw wystarczy stworzyć podkatalog w katalogu 'themes', nie wszystkie ikony są wymagane, lista nazw wczytywanych plików jest następująca:<br/>
+<pre>
+addkey.png       dict.png       find.png    open.png          saveas.png         undo.png
+addsynonym.png   editcopy.png   fonts.png   optimal_view.png  save.png
+contexthelp.png  editcut.png    help.png    redo.png          settings.png
+deletekey.png    editpaste.png  logout.png  rolldown.png      standard_view.png
+delete.png       exit.png       new.png     rollup.png        stats.png
+</pre>  
+  <br/>
+  </p>
+  
+  <hr/>
+  <center>Zanim skorzystasz z programu zapoznaj się z treścią licencji.</center>
+
+  </body>
+</html>
+

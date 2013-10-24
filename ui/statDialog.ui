@@ -1,0 +1,146 @@
+<ui version="4.0" >
+ <class>statDialog</class>
+ <widget class="QWidget" name="statDialog" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>508</width>
+    <height>528</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string>Statystyki</string>
+  </property>
+  <layout class="QGridLayout" >
+   <item row="0" column="0" >
+    <widget class="QGroupBox" name="groupBox_2" >
+     <property name="maximumSize" >
+      <size>
+       <width>16777215</width>
+       <height>140</height>
+      </size>
+     </property>
+     <property name="title" >
+      <string>Dane ogólne</string>
+     </property>
+     <layout class="QGridLayout" >
+      <item row="0" column="0" >
+       <widget class="QFrame" name="frame_2" >
+        <property name="frameShape" >
+         <enum>QFrame::StyledPanel</enum>
+        </property>
+        <property name="frameShadow" >
+         <enum>QFrame::Raised</enum>
+        </property>
+        <layout class="QGridLayout" >
+         <item row="0" column="0" >
+          <layout class="QGridLayout" >
+           <item row="0" column="0" >
+            <widget class="QLabel" name="label" >
+             <property name="text" >
+              <string>wszystkich  snow:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0" >
+            <widget class="QLabel" name="label_6" >
+             <property name="text" >
+              <string>świadomych snów:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="0" >
+            <widget class="QLabel" name="label_2" >
+             <property name="text" >
+              <string>ocenionych snow:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1" >
+            <widget class="QLabel" name="label_3" >
+             <property name="text" >
+              <string>srednia ocen:</string>
+             </property>
+             <property name="margin" >
+              <number>0</number>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1" >
+            <widget class="QLabel" name="label_4" >
+             <property name="text" >
+              <string>najwyzsza ocena</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="1" >
+            <widget class="QLabel" name="label_5" >
+             <property name="text" >
+              <string>najnizsza ocena</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="1" column="0" >
+    <widget class="QGroupBox" name="groupBox" >
+     <property name="title" >
+      <string>Ostatni tydzień</string>
+     </property>
+     <layout class="QGridLayout" >
+      <item row="0" column="0" >
+       <widget class="QFrame" name="frame" >
+        <property name="frameShape" >
+         <enum>QFrame::StyledPanel</enum>
+        </property>
+        <property name="frameShadow" >
+         <enum>QFrame::Raised</enum>
+        </property>
+        <layout class="QGridLayout" >
+         <item row="0" column="0" >
+          <widget class="QLabel" name="label_7" >
+           <property name="font" >
+            <font>
+             <pointsize>13</pointsize>
+            </font>
+           </property>
+           <property name="text" >
+            <string>ZA MAŁO DANYCH DO GRAFIKU</string>
+           </property>
+           <property name="alignment" >
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="3" column="0" >
+    <widget class="QPushButton" name="pushButton" >
+     <property name="text" >
+      <string>Zamknij</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0" >
+    <widget class="QPushButton" name="tableButton" >
+     <property name="text" >
+      <string>Pokaż zestawienie szczegółowe</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

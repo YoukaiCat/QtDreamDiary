@@ -1,0 +1,382 @@
+<ui version="4.0" >
+ <class>settingsDialog</class>
+ <widget class="QWidget" name="settingsDialog" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>542</width>
+    <height>635</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string>My Dream Diary - Ustawienia</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout_3" >
+   <item row="0" column="0" colspan="4" >
+    <widget class="QGroupBox" name="groupBox" >
+     <property name="title" >
+      <string>Wygląd i zachowanie</string>
+     </property>
+     <property name="flat" >
+      <bool>false</bool>
+     </property>
+     <property name="checkable" >
+      <bool>false</bool>
+     </property>
+     <layout class="QGridLayout" name="gridLayout" >
+      <item row="0" column="0" >
+       <widget class="QCheckBox" name="checkBox_4" >
+        <property name="whatsThis" >
+         <string>Zapisuje nazwę użytkownika oraz hasło. Nie należy używać tej opcji jeśli z programu korzysta więcej niż jedna osoba.</string>
+        </property>
+        <property name="text" >
+         <string>Zapamietaj moje dane przy logowaniu</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0" >
+       <widget class="QCheckBox" name="checkBox" >
+        <property name="whatsThis" >
+         <string>Klucze, czyli tzw. znaki snu, mogą być podświetlane w tekście wybranym kolorem. Aby zdefiniować kolor kliknij przycisk "Kolor podświetlenia...".</string>
+        </property>
+        <property name="text" >
+         <string>Podświetlaj klucze</string>
+        </property>
+        <property name="checked" >
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1" >
+       <widget class="QPushButton" name="pushButton" >
+        <property name="whatsThis" >
+         <string>Klucze, czyli tzw. znaki snu, mogą być podświetlane w tekście wybranym kolorem. Aby zdefiniować kolor kliknij przycisk "Kolor podświetlenia...".</string>
+        </property>
+        <property name="text" >
+         <string>Kolor podświetlenia...</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0" >
+       <widget class="QLabel" name="label_3" >
+        <property name="whatsThis" >
+         <string>Wybierz jeden z zestawów ikon znajdujących się w katalogu 'themes'. Możesz także dodawać własne zestawy, szczegóły w pliku pomocy.</string>
+        </property>
+        <property name="text" >
+         <string>Zestaw ikon:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1" >
+       <widget class="QComboBox" name="comboBox" >
+        <property name="whatsThis" >
+         <string>Wybierz jeden z zestawów ikon znajdujących się w katalogu 'themes'. Możesz także dodawać własne zestawy, szczegóły w pliku pomocy.</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0" >
+       <widget class="QCheckBox" name="checkBox_7" >
+        <property name="whatsThis" >
+         <string>Ikona w tacce systemowej pozwala na wyświetlanie komunikatów dotyczących sugestii. Nie możesz wyłączyć tej opcji kiedy system sugestii jest włączony.</string>
+        </property>
+        <property name="text" >
+         <string>Pokaż ikonę w tacce systemowej</string>
+        </property>
+        <property name="checked" >
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1" >
+       <widget class="QCheckBox" name="checkBox_5" >
+        <property name="enabled" >
+         <bool>false</bool>
+        </property>
+        <property name="whatsThis" >
+         <string>Jeśli zdecydowałeś się zapamiętać dane logowania, możesz pominąć ten proces używając logowania automatycznego.</string>
+        </property>
+        <property name="text" >
+         <string>Loguj automatycznie</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="1" >
+       <widget class="QCheckBox" name="checkBox_9" >
+        <property name="whatsThis" >
+         <string>Kiedy ta opcja jest zaznaczona, program przy uruchamianiu sprawdza numer wersji Twojego programu. Jeżeli Twój program nie jest oznaczony najnowszą numeracją zostaniesz poinformowany o możliwości aktualizacji. Wymagane jest połączenie internetowe.</string>
+        </property>
+        <property name="text" >
+         <string>Sprawdzaj aktualizacje</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="1" column="0" colspan="4" >
+    <widget class="QGroupBox" name="groupBox_3" >
+     <property name="title" >
+      <string>Sugestie</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_2" >
+      <item row="0" column="0" >
+       <widget class="QCheckBox" name="checkBox_8" >
+        <property name="whatsThis" >
+         <string>Włącza mechanizm umożliwiający wykrywanie powtarzanych wyrażeń w celu utworzenia klucza. Szczegóły w pliku pomocy.</string>
+        </property>
+        <property name="text" >
+         <string>Włącz system sugestii</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0" >
+       <widget class="QLabel" name="label_2" >
+        <property name="whatsThis" >
+         <string>Określa zakres przeszukiwanego materiału. Szczegóły w pliku pomocy.</string>
+        </property>
+        <property name="text" >
+         <string>Skanuj dane z okresu:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1" colspan="2" >
+       <widget class="QComboBox" name="comboBox_2" >
+        <property name="whatsThis" >
+         <string>Określa zakres przeszukiwanego materiału. Szczegóły w pliku pomocy.</string>
+        </property>
+        <item>
+         <property name="text" >
+          <string>Ostatni tydźień</string>
+         </property>
+        </item>
+        <item>
+         <property name="text" >
+          <string>Ostatni miesiąc</string>
+         </property>
+        </item>
+        <item>
+         <property name="text" >
+          <string>Wszystkie</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="3" column="0" >
+       <widget class="QLabel" name="label" >
+        <property name="whatsThis" >
+         <string>Wyznacza minimalną długość przetwarzanych wyrażeń. Szczegóły w pliku pomocy.</string>
+        </property>
+        <property name="text" >
+         <string>Ignoruj wyrażenia krótsze niż:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1" colspan="2" >
+       <widget class="QSpinBox" name="spinBox" >
+        <property name="whatsThis" >
+         <string>Wyznacza minimalną długość przetwarzanych wyrażeń. Szczegóły w pliku pomocy.</string>
+        </property>
+        <property name="suffix" >
+         <string> znaków</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0" >
+       <widget class="QLabel" name="label_4" >
+        <property name="maximumSize" >
+         <size>
+          <width>120</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="whatsThis" >
+         <string>Określa ilość dokumentów zawierających dane wyrażenie. Szczegóły w pliku pomocy.</string>
+        </property>
+        <property name="text" >
+         <string>Czułość:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="1" colspan="2" >
+       <widget class="QSpinBox" name="spinBox_2" >
+        <property name="whatsThis" >
+         <string>Określa ilość dokumentów zawierających dane wyrażenie. Szczegóły w pliku pomocy.</string>
+        </property>
+        <property name="suffix" >
+         <string> wystąpień(a)</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1" colspan="2" >
+       <widget class="QComboBox" name="comboBox_3" >
+        <property name="whatsThis" >
+         <string>Określa typ przeszukiwanych wyrażeń. Szczegóły w pliku pomocy.</string>
+        </property>
+        <item>
+         <property name="text" >
+          <string>Jedno- i dwuwyrazowe</string>
+         </property>
+        </item>
+        <item>
+         <property name="text" >
+          <string>Jednowyrazowe</string>
+         </property>
+        </item>
+        <item>
+         <property name="text" >
+          <string>Dwuwyrazowe</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="2" column="0" >
+       <widget class="QLabel" name="label_7" >
+        <property name="whatsThis" >
+         <string>Określa typ przeszukiwanych wyrażeń. Szczegóły w pliku pomocy.</string>
+        </property>
+        <property name="text" >
+         <string>Przetwarzaj wyrażenia:</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="2" column="0" colspan="4" >
+    <widget class="QGroupBox" name="groupBox_2" >
+     <property name="whatsThis" >
+      <string>Wyznacza typy dokumentów które przed zapisem będą poddane szyfrowaniu. Szczegóły w pliku pomocy.</string>
+     </property>
+     <property name="title" >
+      <string>Szyfrowanie</string>
+     </property>
+     <layout class="QGridLayout" >
+      <item row="0" column="0" >
+       <widget class="QCheckBox" name="checkBox_2" >
+        <property name="whatsThis" >
+         <string>Wyznacza typy dokumentów które przed zapisem będą poddane szyfrowaniu. Szczegóły w pliku pomocy.</string>
+        </property>
+        <property name="text" >
+         <string>Szyfrowanie dokumentów</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0" >
+       <widget class="QCheckBox" name="checkBox_6" >
+        <property name="whatsThis" >
+         <string>Wyznacza typy dokumentów które przed zapisem będą poddane szyfrowaniu. Szczegóły w pliku pomocy.</string>
+        </property>
+        <property name="text" >
+         <string>Szyfrowanie kluczy</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1" >
+       <widget class="QCheckBox" name="checkBox_3" >
+        <property name="whatsThis" >
+         <string>Wyznacza typy dokumentów które przed zapisem będą poddane szyfrowaniu. Szczegóły w pliku pomocy.</string>
+        </property>
+        <property name="text" >
+         <string>Szyfrowanie symboli</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="3" column="0" colspan="4" >
+    <widget class="QGroupBox" name="groupBox_4" >
+     <property name="title" >
+      <string>Ustawienia przeglądarki</string>
+     </property>
+     <layout class="QGridLayout" >
+      <item row="0" column="0" >
+       <widget class="QLabel" name="label_5" >
+        <property name="whatsThis" >
+         <string>Lokalizacja przeglądarki internetowej na Twoim dysku twardym. Jeżeli posiadasz kilka przeglądarek, program domyślnie wyznaczy przeglądarkę Mozilla Firefox.</string>
+        </property>
+        <property name="text" >
+         <string>Scieżka:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1" >
+       <widget class="QLineEdit" name="browserEdit" >
+        <property name="whatsThis" >
+         <string>Lokalizacja przeglądarki internetowej na Twoim dysku twardym. Jeżeli posiadasz kilka przeglądarek, program domyślnie wyznaczy przeglądarkę Mozilla Firefox.</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="2" >
+       <widget class="QPushButton" name="toolButton" >
+        <property name="whatsThis" >
+         <string>Lokalizacja przeglądarki internetowej na Twoim dysku twardym. Jeżeli posiadasz kilka przeglądarek, program domyślnie wyznaczy przeglądarkę Mozilla Firefox.</string>
+        </property>
+        <property name="text" >
+         <string>Wybierz...</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0" >
+       <widget class="QLabel" name="label_6" >
+        <property name="whatsThis" >
+         <string>Adres internetowy sennika sprawdzającego znaczenie wybranego wyrażenia. Strona z której korzystasz musi umożliwiać przekazanie go przez adres. Link musi zawierać znacznik #exp#, który będzie zastąpiony Twoim wyrażeniem. domyślny adres to "http://www.sennik.biz/?s=#exp#". Więcej informacji w pliku pomocy.</string>
+        </property>
+        <property name="text" >
+         <string>Adres:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1" colspan="2" >
+       <widget class="QLineEdit" name="addressEdit" >
+        <property name="whatsThis" >
+         <string>Adres internetowy sennika sprawdzającego znaczenie wybranego wyrażenia. Strona z której korzystasz musi umożliwiać przekazanie go przez adres. Link musi zawierać znacznik #exp#, który będzie zastąpiony Twoim wyrażeniem. domyślny adres to "http://www.sennik.biz/?s=#exp#". Więcej informacji w pliku pomocy.</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="4" column="0" >
+    <widget class="QPushButton" name="pushButton_3" >
+     <property name="text" >
+      <string>Pomoc</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="1" >
+    <widget class="QPushButton" name="pushButton_2" >
+     <property name="whatsThis" >
+      <string>Przywraca domyślne ustawienia.</string>
+     </property>
+     <property name="text" >
+      <string>Domyślne</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="2" >
+    <widget class="QPushButton" name="okButton" >
+     <property name="whatsThis" >
+      <string>Zatwierdza ustawienia.</string>
+     </property>
+     <property name="text" >
+      <string>Ok</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="3" >
+    <widget class="QPushButton" name="cancelButton" >
+     <property name="whatsThis" >
+      <string>Zamyka okno ustawień bez zapisywania zmian.</string>
+     </property>
+     <property name="text" >
+      <string>Anuluj</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

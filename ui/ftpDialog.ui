@@ -1,0 +1,114 @@
+<ui version="4.0" >
+ <class>ftpDialog</class>
+ <widget class="QDialog" name="ftpDialog" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>590</width>
+    <height>282</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string>import/eksport FTP</string>
+  </property>
+  <layout class="QGridLayout" >
+   <item row="0" column="0" colspan="4" >
+    <widget class="QGroupBox" name="groupBox" >
+     <property name="title" >
+      <string>Serwer FTP</string>
+     </property>
+     <layout class="QGridLayout" >
+      <item row="0" column="0" >
+       <widget class="QLabel" name="label" >
+        <property name="text" >
+         <string>Adres:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1" >
+       <widget class="QLineEdit" name="lineEdit" />
+      </item>
+      <item row="1" column="0" >
+       <widget class="QLabel" name="label_2" >
+        <property name="text" >
+         <string>Login:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1" >
+       <widget class="QLineEdit" name="lineEdit_2" />
+      </item>
+      <item row="2" column="0" >
+       <widget class="QLabel" name="label_3" >
+        <property name="text" >
+         <string>Hasło:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1" >
+       <widget class="QLineEdit" name="lineEdit_3" >
+        <property name="text" >
+         <string/>
+        </property>
+        <property name="echoMode" >
+         <enum>QLineEdit::Password</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0" >
+       <widget class="QCheckBox" name="checkBox" >
+        <property name="text" >
+         <string>Zapisz dane</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1" >
+       <widget class="QCheckBox" name="checkBox_2" >
+        <property name="enabled" >
+         <bool>false</bool>
+        </property>
+        <property name="text" >
+         <string>Wysyłaj automatycznie przy zamykaniu programu</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="1" column="0" >
+    <widget class="QLabel" name="label_4" >
+     <property name="text" >
+      <string>Nazwa pliku:</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1" colspan="3" >
+    <widget class="QLineEdit" name="lineEdit_4" />
+   </item>
+   <item row="2" column="1" >
+    <widget class="QPushButton" name="pushButton" >
+     <property name="text" >
+      <string>&amp;Wyślij</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="2" >
+    <widget class="QPushButton" name="pushButton_2" >
+     <property name="text" >
+      <string>&amp;Pobierz</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="3" >
+    <widget class="QPushButton" name="pushButton_3" >
+     <property name="text" >
+      <string>&amp;Zamknij</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
