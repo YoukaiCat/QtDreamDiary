@@ -141,10 +141,10 @@ bool MyDreamBase::openFile(QString filename)
       return false;
     if(xdoc.doctype().name() != "mdd_document")
     {
-      QMessageBox::critical(mw, tr("Błąd"),
-			    tr
-			    ("Wskazany plik nie jest plikiem programu My Dream Diary!"),
-			    QMessageBox::Ok);
+      QMessageBox::critical(mw, tr("Error"),
+                tr
+                ("The selected file is not a  My Dream Diary file!"),
+                QMessageBox::Ok);
       return false;
     }
     document = xdoc.elementsByTagName("document").item(0);
@@ -469,10 +469,10 @@ void MyDreamBase::importFromFile(QString filename)
 
   if(xdoc.doctype().name() != "MyDreamDiary_base")
   {
-    QMessageBox::critical(mw, tr("Błąd"),
-			  tr
-			  ("Wskazany plik nie jest archiwum programu My Dream Diary!"),
-			  QMessageBox::Ok);
+    QMessageBox::critical(mw, tr("Error"),
+              tr
+              ("The selected file is not a My Dream Diary archive file!"),
+              QMessageBox::Ok);
     return;
   }
 
@@ -491,8 +491,8 @@ void MyDreamBase::importFromFile(QString filename)
       document.toElement().elementsByTagName("title").item(0).firstChild().
       toText().data();
     doc.date =
-      QDate::fromString(document.toElement().elementsByTagName("date").
-			item(0).firstChild().toText().data(), "ddMMyyyy");
+	QDate::fromString(document.toElement().elementsByTagName("date").
+			  item(0).firstChild().toText().data(), "ddMMyyyy");
 
     if(document.toElement().elementsByTagName("lucid").item(0).firstChild().
        toText().data() == "0")
@@ -646,10 +646,9 @@ void MyDreamBase::saveToHtml(QString filename)
   {
     if(!mw->config.createDefaultHtmlTemplate(mw->userPath + "/template.html"))
     {
-      QMessageBox::critical(mw, tr("Błąd"),
-			    tr("Nie powiodło się tworzenie wzorca do budowy pliku html!\
-		 	Operacja wymaga pliku ") + mw->userPath + "/template.html",
-			    QMessageBox::Ok);
+      QMessageBox::critical(mw, tr("Error"),
+                tr("Creating template for html file failed! Please check for file") + mw->userPath + "/template.html",
+                QMessageBox::Ok);
       return;
     }
   }

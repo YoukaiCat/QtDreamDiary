@@ -58,7 +58,7 @@ void replaceDialog::replace()
   mw->ui.textEdit->setPlainText(text);
 
   exp = exp.setNum(r);
-  QMessageBox::information(this, tr("Zamieniono"),
-			   tr("Zamieniono ") + exp + tr(" wyrażeń."),
-			   QMessageBox::Ok);
+  QMessageBox::information(this, tr("Replaced"),
+               tr("Replaced ") + exp + tr("  expressions."),
+               QMessageBox::Ok);
 }

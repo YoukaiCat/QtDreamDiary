@@ -49,8 +49,8 @@ bool XConfig::createDefault(QString password)
     browserPath = "/usr/bin/konqueror";
   else
     browserPath =
-      QApplication::translate("XConfig", "Wybierz przeglądarkę",
-			      0, QApplication::UnicodeUTF8);
+      QApplication::translate("XConfig", "Select your browser",
+                  0, QApplication::UnicodeUTF8);
 
   font.fromString("DejaVu Serif,9,-1,5,50,0,0,0,0,0");
 #endif
@@ -63,8 +63,8 @@ bool XConfig::createDefault(QString password)
     browserPath = "C:\\Program Files\\Internet Explorer\\IEXPLORE.EXE";
   else
     browserPath =
-      QApplication::translate("XConfig", "Wybierz przeglądarkę",
-			      0, QApplication::UnicodeUTF8);
+      QApplication::translate("XConfig", "Select your browser",
+                  0, QApplication::UnicodeUTF8);
 
   font.fromString("MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0");
 #endif

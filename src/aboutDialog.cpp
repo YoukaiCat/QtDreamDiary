@@ -24,7 +24,7 @@ aboutDialog::aboutDialog(MainForm * parent)
 {
   ui.setupUi(this);
   mw = parent;
-  ui.label_3->setText(tr("My Dream Diary (wersja ") + VER + tr(")"));
+  ui.label_3->setText(tr("My Dream Diary (version ") + VER + tr(")"));
   img.load(mw->exePath + "/themes/abouticon.png");
   setWindowFlags(Qt::Widget);
   connect(ui.pushButton, SIGNAL(clicked()), this, SLOT(close()));

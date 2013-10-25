@@ -59,11 +59,11 @@ void symbolDialog::add()
 {
   if(changed)
   {
-    int q = QMessageBox::question(this, tr("Zamknij"),
-				  tr
-				  ("Treść znaczenia symbolu uległa zmianie, czy chcesz zapisać zmiany?"),
-				  tr("Zapisz"), tr("Nie zapisuj"),
-				  tr("Anuluj"));
+    int q = QMessageBox::question(this, tr("Close"),
+                  tr
+                  ("The contents of the current symbol has been changed, save changes?"),
+                  tr("Save"), tr("Don't save"),
+                  tr("Cancel"));
 
     if(q == 0)
     {
@@ -75,20 +75,20 @@ void symbolDialog::add()
   changed = false;
   bool ok;
   QString
-    exp = QInputDialog::getText(this, tr("Dodaj Symbol"),
-				tr("Podaj nazwę nowego symbolu"),
-				QLineEdit::Normal, "", &ok, 0);
+    exp = QInputDialog::getText(this, tr("Add symbol"),
+                tr("Please enter new name for symbol"),
+                QLineEdit::Normal, "", &ok, 0);
 
   if(ok)
   {
     for(int i = 0; i < symbolList.count(); i++)
       if(exp == symbolList.at(i).name)
       {
-	QMessageBox::warning(this, tr("Ostrzeżenie"),
-			     tr
-			     ("Podany symbol już istnieje!"),
-			     QMessageBox::Ok);
-	return;
+    QMessageBox::warning(this, tr("Warning"),
+                 tr
+                 ("Symbol already exists!"),
+                 QMessageBox::Ok);
+    return;
       }
 
     TSymbol tmp;
@@ -154,10 +154,10 @@ void symbolDialog::deleteSelected()
   if(ui.listWidget->currentRow() != -1)
   {
 
-    int q = QMessageBox::question(this, tr("Usuń"),
-				  tr
-				  ("Czy na pewno chcesz usunąć ten symbol?"),
-				  tr("Usuń"), tr("Anuluj"));
+    int q = QMessageBox::question(this, tr("Delete"),
+                  tr
+                  ("Do you really want to delete the selected symbol?"),
+                  tr("Delete"), tr("Cancel"));
 
     if(q == 0)
     {
@@ -185,11 +185,11 @@ void symbolDialog::openSelected()
 
   if(changed)
   {
-    int q = QMessageBox::question(this, tr("Zamknij"),
-				  tr
-				  ("Treść znaczenia symbolu uległa zmianie, czy chcesz zapisać zmiany?"),
-				  tr("Zapisz"), tr("Nie zapisuj"),
-				  tr("Anuluj"));
+    int q = QMessageBox::question(this, tr("Close"),
+                  tr
+                  ("The contents of the current symbol has been changed, save changes?"),
+                  tr("Save"), tr("Don't save"),
+                  tr("Cancel"));
 
     if(q == 0)
     {
@@ -214,7 +214,7 @@ void symbolDialog::openSelected()
       }
   }
   else
-    setWindowTitle(tr("Symbole"));
+    setWindowTitle(tr("Symbols"));
 }
 
 void symbolDialog::textChanged()
@@ -227,11 +227,11 @@ void symbolDialog::quit()
 {
   if(changed)
   {
-    int q = QMessageBox::question(this, tr("Zamknij"),
-				  tr
-				  ("Treść znaczenia symbolu uległa zmianie, czy chcesz zapisać zmiany przed wyjściem?"),
-				  tr("Zapisz"), tr("Nie zapisuj"),
-				  tr("Anuluj"));
+    int q = QMessageBox::question(this, tr("Close"),
+                  tr
+                  ("The contents of the current symbol has been changed, save changes before closing?"),
+                  tr("Save"), tr("Don't save"),
+                  tr("Cancel"));
 
     if(q == 0)
     {
@@ -247,8 +247,8 @@ void symbolDialog::Export()
 {
   QString
     filename =
-    QFileDialog::getSaveFileName(this, tr("Zapisz plik"), ".",
-				 tr("Symbole My Dream Diary(*.xsym)"));
+    QFileDialog::getSaveFileName(this, tr("Save file"), ".",
+                 tr("My Dream Diary symbols (*.xsym)"));
   if(filename.right(5) != ".xsym")
     filename += ".xsym";
 
@@ -261,14 +261,14 @@ void symbolDialog::import()
 {
   QString
     filename =
-    QFileDialog::getOpenFileName(this, tr("Otwórz plik"), ".",
-				 tr("Wszystkie pliki(*.*)"));
+    QFileDialog::getOpenFileName(this, tr("Open file"), ".",
+                 tr("All files (*)"));
   if(!filename.isEmpty())
   {
     int q = QMessageBox::question(this, tr("Import"),
-				  tr
-				  ("Wszystkie dotychczasowe symbole zostaną bezpowrotnie utracone, czy na pewno chcesz importowac symbole z wybranego pliku?"),
-				  tr("Importuj"), tr("Anuluj"));
+                  tr
+                  ("All saved symbols will be removed, do you really want to import symbols from the selected file?"),
+                  tr("Import"), tr("Cancel"));
     if(q == 0)
     {
       load(filename);

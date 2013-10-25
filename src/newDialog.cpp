@@ -51,22 +51,22 @@ void newDialogClass::pushButtonClicked()
   for(int i = 0; i < ui.lineEdit->text().size(); i++)
     if(!chars.contains(ui.lineEdit->text().at(i).toAscii()))
     {
-      QMessageBox::warning(this, tr("Błąd"),
-			   tr
-			   ("W nazwie użytkownika użyto niedozwolonych znaków: \"")
-			   + ui.lineEdit->text().at(i) + "\"",
-			   QMessageBox::Ok);
+      QMessageBox::warning(this, tr("Error"),
+               tr
+               ("Forbidden characters apeared in the Username. \"")
+               + ui.lineEdit->text().at(i) + "\"",
+               QMessageBox::Ok);
       return;
     }
   // w hasle
   for(int i = 0; i < ui.lineEdit_2->text().size(); i++)
     if(!chars.contains(ui.lineEdit_2->text().at(i).toAscii()))
     {
-      QMessageBox::warning(this, tr("Błąd"),
-			   tr
-			   ("W haśle użytkownika użyto niedozwolonych znaków: \"")
-			   + ui.lineEdit_2->text().at(i) +
-			   "\"", QMessageBox::Ok);
+      QMessageBox::warning(this, tr("Error"),
+               tr
+               ("Forbidden characters appear in the password: \"")
+               + ui.lineEdit_2->text().at(i) +
+               "\"", QMessageBox::Ok);
       return;
     }
   // sprawdzanie czy wypelniono wszystkie pola
@@ -74,31 +74,31 @@ void newDialogClass::pushButtonClicked()
      (ui.lineEdit_2->text().size() == 0) ||
      (ui.lineEdit_3->text().size() == 0))
   {
-    QMessageBox::warning(this, tr("Błąd"),
-			 tr("Musisz wypełnić wszystkie pola!"),
-			 QMessageBox::Ok);
+    QMessageBox::warning(this, tr("Error"),
+             tr("You need to fill all fields!"),
+             QMessageBox::Ok);
     return;
   }
 
   /*
    * fragment usuniety na prosbe userow
-   * 
+   *
    * //czy haslo ma co najmniej 3 znaki if(
-   * (ui.lineEdit->text().size()<3) || (ui.lineEdit_2->text().size() <3) 
-   * ) { QMessageBox::warning(this,tr("Błąd"),tr("Wszystkie dane
+   * (ui.lineEdit->text().size()<3) || (ui.lineEdit_2->text().size() <3)
+   * ) { QMessageBox::warning(this,tr("Error"),tr("Wszystkie dane
    * muszą zawierać co najmniej trzy znaki!"),QMessageBox::Ok);
    * return; }
-   * 
+   *
    * if(ui.lineEdit->text() == ui.lineEdit_2->text()) {
-   * QMessageBox::warning(this,tr("Błąd"),tr("Login i hasło nie mogą 
-   * być takie same!"),QMessageBox::Ok); return; } 
+   * QMessageBox::warning(this,tr("Error"),tr("Login i hasło nie mogą
+   * być takie same!"),QMessageBox::Ok); return; }
    */
 
   if(ui.lineEdit_3->text() != ui.lineEdit_2->text())
   {
-    QMessageBox::warning(this, tr("Błąd"),
-			 tr("Błędnie wprowadzone hasło!"),
-			 QMessageBox::Ok);
+    QMessageBox::warning(this, tr("Error"),
+             tr("Wrong password! Retype it!"),
+             QMessageBox::Ok);
     ui.lineEdit_3->clear();
     ui.lineEdit_2->clear();
     return;
@@ -106,9 +106,9 @@ void newDialogClass::pushButtonClicked()
 
   if(QFile::exists(userPath + "/config.cfg"))
   {
-    QMessageBox::warning(this, tr("Błąd"),
-			 tr("Podany użytkownik już istnieje!"),
-			 QMessageBox::Ok);
+    QMessageBox::warning(this, tr("Error"),
+             tr("User already exists!"),
+             QMessageBox::Ok);
     return;
   }
   // tworzenie usera:
@@ -137,18 +137,18 @@ void newDialogClass::pushButtonClicked()
     // pliku 
     // konfiguracyjnego
   {
-    QMessageBox::information(this, tr("Sukces"),
-			     tr
-			     ("Utworzono nowego użytkownika, możesz się zalogować"),
-			     QMessageBox::Ok);
+    QMessageBox::information(this, tr("Success"),
+                 tr
+                 ("The new profile has been created! You can login now"),
+                 QMessageBox::Ok);
     this->close();
   }
   else
   {
-    QMessageBox::information(this, tr("Błąd"),
-			     tr
-			     ("Wystąpił problem podczas tworzenia użytkownika, konto może nie działać poprawnie."),
-			     QMessageBox::Ok);
+    QMessageBox::information(this, tr("Error"),
+                 tr
+                 ("Unknown error appeard while creating profile. Your account can work inappropriate."),
+                 QMessageBox::Ok);
     this->close();
   }
 }
