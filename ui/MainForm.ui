@@ -446,6 +446,7 @@ p, li { white-space: pre-wrap; }
      </property>
      <addaction name="actionEn"/>
      <addaction name="actionPl"/>
+     <addaction name="actionRu"/>
      <addaction name="separator"/>
      <addaction name="actionLang"/>
     </widget>
@@ -1049,6 +1050,11 @@ p, li { white-space: pre-wrap; }
   <action name="actionContextAddNewKey">
    <property name="text">
     <string>Add key</string>
+   </property>
+  </action>
+  <action name="actionRu">
+   <property name="text">
+    <string>Russian [ru]</string>
    </property>
   </action>
  </widget>

@@ -123,6 +123,7 @@ MainForm::MainForm()
 
   connect(ui.actionPl, SIGNAL(triggered()), this, SLOT(aLangPl()));
   connect(ui.actionEn, SIGNAL(triggered()), this, SLOT(aLangEn()));
+  connect(ui.actionRu, SIGNAL(triggered()), this, SLOT(aLangRu()));
   connect(ui.actionLang, SIGNAL(triggered()), this, SLOT(aLangOther()));
 
   connect(ui.actionDefaultView, SIGNAL(triggered()), this,
@@ -1209,28 +1210,36 @@ void MainForm::aDefaultView()
 // -----------------------------------------------------------------------------------------------
 void MainForm::aLangEn()
 {
-    if(QFile::remove(exePath + "/locale/current.qm"))
-      QMessageBox::information(this, tr("information"),
-                   tr
-                   ("All changes will be available after application restart."),
-                   QMessageBox::Ok);
+    changeLanguageTo("en");
 }
 
 // -----------------------------------------------------------------------------------------------
 void MainForm::aLangPl()
 {
-  QFile::remove(exePath + "/locale/current.qm");
-  if((!QFile::copy(exePath + "/locale/pl.qm", exePath + "/locale/current.qm"))
-     || (!QFile::exists(exePath + "/locale/pl.qm")))
-    QMessageBox::critical(this, tr("Error"),
-              tr
-              ("Copying translation file failed! Please check the 'locale' directory."),
-              QMessageBox::Ok);
-  else
-    QMessageBox::information(this, tr("information"),
-                 tr
-                 ("All changes will be available after application restart."),
-                 QMessageBox::Ok);
+    changeLanguageTo("pl");
+}
+
+// -----------------------------------------------------------------------------------------------
+void MainForm::aLangRu()
+{
+    changeLanguageTo("ru");
+}
+
+// -----------------------------------------------------------------------------------------------
+void MainForm::changeLanguageTo(QString LanguageISOCode)
+{
+    QFile::remove(exePath + "/locale/current.qm");
+    if(LanguageISOCode != "en")
+        if((!QFile::copy(exePath + "/locale/" + LanguageISOCode + ".qm",
+                         exePath + "/locale/current.qm")) ||
+           (!QFile::exists(exePath + "/locale/" + LanguageISOCode + ".qm")))
+          QMessageBox::critical(this, tr("Error"),
+                    tr("Copying translation file failed! Please check the 'locale' directory."),
+                    QMessageBox::Ok);
+        else
+          QMessageBox::information(this, tr("information"),
+                       tr("All changes will be available after application restart."),
+                       QMessageBox::Ok);
 }
 
 // -----------------------------------------------------------------------------------------------
