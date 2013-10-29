@@ -18,6 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#include <QDesktopServices>
 #include "MainForm.h"
 
 // -----------------------------------------------------------------------------------------------
@@ -30,7 +31,13 @@
 
 MainForm::MainForm()
 {
+#ifdef INSTALLATION_PREFIX
+  exePath = INSTALLATION_PREFIX;
+#else
   exePath = QCoreApplication::applicationDirPath();
+#endif
+  currentTranslation = QDesktopServices::storageLocation(QDesktopServices::DataLocation) + "/mdd/locale/current.qm";
+  lastLoginPath = QDesktopServices::storageLocation(QDesktopServices::DataLocation) + "/mdd/last";
   ui.setupUi(this);
   loginOk = false;
   profile_deleting = false;
@@ -994,10 +1001,10 @@ void MainForm::aDeleteProfile()
     dataDir.rmdir(userPath);
 
     Last last;
-    if(last.load(exePath + "/last"))
+    if(last.load(lastLoginPath))
     {
       if(last.login == username)
-	QFile::remove(exePath + "/last");
+	QFile::remove(lastLoginPath);
     }
     profile_deleting = true;
     aLogout();
@@ -1209,9 +1216,8 @@ void MainForm::aDefaultView()
 // -----------------------------------------------------------------------------------------------
 void MainForm::aLangEn()
 {
-  QFile::remove(exePath + "/locale/current.qm");
-  if((!QFile::copy
-      (exePath + "/locale/en.qm", exePath + "/locale/current.qm"))
+  QFile::remove(currentTranslation);
+  if((!QFile::copy(exePath + "/locale/en.qm", currentTranslation))
      || (!QFile::exists(exePath + "/locale/en.qm")))
     QMessageBox::critical(this, tr("Błąd"),
 			  tr
@@ -1227,7 +1233,7 @@ void MainForm::aLangEn()
 // -----------------------------------------------------------------------------------------------
 void MainForm::aLangPl()
 {
-  if(QFile::remove(exePath + "/locale/current.qm"))
+  if(QFile::remove(currentTranslation))
     QMessageBox::information(this, tr("informacja"),
 			     tr
 			     ("Zastosowane zmiany będą widoczne dopiero po ponownym uruchomieniu programu."),
@@ -1243,8 +1249,8 @@ void MainForm::aLangOther()
 				 tr("Plik tłumaczenia QT(*.qm)"));
   if(!filename.isEmpty())
   {
-    QFile::remove(exePath + "/locale/current.qm");
-    if(QFile::link(filename, exePath + "/locale/current.qm"))
+    QFile::remove(currentTranslation);
+    if(QFile::link(filename, currentTranslation))
       QMessageBox::information(this, tr("informacja"),
 			       tr
 			       ("Zastosowane zmiany będą widoczne dopiero po ponownym uruchomieniu programu."),

@@ -90,6 +90,8 @@ Q_OBJECT public:
   QHttp http;
   QString username;
   QString userPath;
+  QString currentTranslation;
+  QString lastLoginPath;
   QString exePath;
   QString themePath;
   QString vig_key;
