@@ -98,10 +98,10 @@ void settingsDialog::loadConfigData()
 			(QDir::NoDotAndDotDot | QDir::AllDirs, QDir::Name));
   int ti = ui.comboBox->findText(config->theme);
   if(ti == -1)
-    QMessageBox::warning(this, tr("Błąd"),
-			 tr
-			 ("Nie odnaleziono motywu ikon, wybierz inny działający motyw lub dodaj własny"),
-			 QMessageBox::Ok);
+    QMessageBox::warning(this, tr("Error"),
+             tr
+             ("No icon theme was found, select a different icon theme or add new one"),
+             QMessageBox::Ok);
   else
     ui.comboBox->setCurrentIndex(ti);
   if(config->trayicon)
@@ -161,14 +161,14 @@ void settingsDialog::toolButtonClicked()
 {
   QString
     filename =
-    QFileDialog::getOpenFileName(this, tr("Otwórz plik"), ".",
-				 tr("Wszystkie pliki(*)"));
+    QFileDialog::getOpenFileName(this, tr("Open file"), ".",
+                 tr("All files(*)")); //
   if(!filename.isEmpty())
     ui.browserEdit->setText(filename);
 }
 
-// ------------------------------------------------------------------------------------------------------------ 
-// 
+// ------------------------------------------------------------------------------------------------------------
+//
 void settingsDialog::okButtonClicked()
 {
   bool OK = true;
@@ -272,10 +272,10 @@ void settingsDialog::okButtonClicked()
   config->browserPath = ui.browserEdit->text();
   if(!ui.addressEdit->text().contains("#exp#"))
   {
-    QMessageBox::warning(this, tr("Błąd"),
-			 tr
-			 ("Błędnie wprowadzony adres strony, brak wymaganego wyrażenia #exp#. Szczegóły w pliku pomocy."),
-			 QMessageBox::Ok);
+    QMessageBox::warning(this, tr("Error"),
+             tr
+             ("Wrongly inscribed web adress, #exp# tag is required. Details in the manual file."),
+             QMessageBox::Ok);
     OK = false;
   }
   else
@@ -302,10 +302,10 @@ void settingsDialog::pushButton2Clicked()
   config->createDefault(p);
   config->update_url = uurl;
   loadConfigData();
-  QMessageBox::information(this, tr("Ustawienia"),
-			   tr
-			   ("Przywrócono domyślne ustawienia programu."),
-			   QMessageBox::Ok);
+  QMessageBox::information(this, tr("Settings"),
+               tr
+               ("Default settings restored."),
+               QMessageBox::Ok);
 }
 
 void settingsDialog::checkBox4Changed(int s)

@@ -69,12 +69,12 @@ void ftpDialog::upload()
   if(host == "" || login == "" || password == "" || filename == "")
   {
     QMessageBox::warning(this, tr("FTP"),
-			 tr("Musisz wypełnić wszystkie pola!"),
-			 QMessageBox::Ok);
+             tr("You must fill all fields!"),
+             QMessageBox::Ok);
     return;
   }
   // ============================================
-  label->setText(tr("Łączenie z serwerem..."));
+  label->setText(tr("Connecting to server..."));
   infoDialog->show();
   if(ftp->state() == QFtp::Unconnected)
     ftp->connectToHost(host);
@@ -100,19 +100,19 @@ void ftpDialog::download()
   if(host == "" || login == "" || password == "" || filename == "")
   {
     QMessageBox::warning(this, tr("FTP"),
-			 tr("Musisz wypełnić wszystkie pola!"),
-			 QMessageBox::Ok);
+             tr("You must fill all fields!"),
+             QMessageBox::Ok);
     return;
   }
-  int q = QMessageBox::question(this, tr("Potwierdź"),
-				tr
-				("Pobranie nowej bazy spowoduje utratę bieżącego archiwum. Czy na pewno chcesz kontynuować?"),
-				tr("Pobierz"), tr("Anuluj"));
+  int q = QMessageBox::question(this, tr("Confirm"),
+                tr
+                ("After downloading a new filebase all archives will be deleted. Do you want to continue?"),
+                tr("Download"), tr("Cancel"));
   if(q == 0)
   {
 
     // ============================================
-    label->setText(tr("Łączenie z serwerem..."));
+    label->setText(tr("Connecting to server..."));
     infoDialog->show();
     if(ftp->state() == QFtp::Unconnected)
       ftp->connectToHost(host);
@@ -148,10 +148,10 @@ void ftpDialog::stateChanged(int state)
   switch (state)
   {
   case QFtp::Connected:
-    label->setText(tr("Logowanie..."));
+    label->setText(tr("Logging...."));
     break;
   case QFtp::LoggedIn:
-    label->setText(tr("ZALOGOWANO"));
+    label->setText(tr("LOGGED IN"));
     break;
   case QFtp::Closing:
     infoDialog->close();
@@ -166,16 +166,16 @@ void ftpDialog::dataTransferProgress(qint64 done, qint64 total)
     QString d, t;
     d.setNum(done);
     t.setNum(total);
-    label->setText(tr("transfer danych: ") + d + "/" + t);
+    label->setText(tr("data transfer: ") + d + "/" + t);
     infoDialog->show();
   }
   else
   {
-    label->setText(tr("Zakończono"));
+    label->setText(tr("Operation finished"));
     QMessageBox::information(this, tr("FTP"),
-			     tr
-			     ("Transfer pliku zakończony sukcesem!"),
-			     QMessageBox::Ok);
+                 tr
+                 ("Data transfer ended successfully!"),
+                 QMessageBox::Ok);
 
     infoDialog->close();
 
@@ -193,10 +193,10 @@ void ftpDialog::commandFinished(int, bool error)
   {
     if(error)
     {
-      QMessageBox::critical(this, tr("Błąd"),
-			    tr
-			    ("Wystąpił błąd podczas pobierania archiwum"),
-			    QMessageBox::Ok);
+      QMessageBox::critical(this, tr("Error"),
+                tr
+                ("An unknown error appeard while downloading archives"),
+                QMessageBox::Ok);
       return;
     }
 
@@ -219,10 +219,10 @@ void ftpDialog::commandFinished(int, bool error)
       QFile::remove(mw->exePath + "ftp.mdd");
     }
     else
-      QMessageBox::critical(this, tr("Błąd"),
-			    tr
-			    ("Zapis pobranego archiwum zakończony niepowodzeniem"),
-			    QMessageBox::Ok);
+      QMessageBox::critical(this, tr("Error"),
+                tr
+                ("Downloading ened with failure"),
+                QMessageBox::Ok);
   }
 }
 

@@ -1,7 +1,8 @@
-<ui version="4.0" >
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
  <class>replaceDialog</class>
- <widget class="QWidget" name="replaceDialog" >
-  <property name="geometry" >
+ <widget class="QWidget" name="replaceDialog">
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
@@ -9,52 +10,52 @@
     <height>207</height>
    </rect>
   </property>
-  <property name="windowTitle" >
-   <string>Zastąp</string>
+  <property name="windowTitle">
+   <string>Replace</string>
   </property>
-  <layout class="QGridLayout" >
-   <item row="0" column="0" colspan="2" >
-    <widget class="QGroupBox" name="groupBox" >
-     <property name="title" >
-      <string>Znajdź</string>
+  <layout class="QGridLayout">
+   <item row="0" column="0" colspan="2">
+    <widget class="QGroupBox" name="groupBox">
+     <property name="title">
+      <string>Find</string>
      </property>
-     <layout class="QGridLayout" >
-      <item row="0" column="0" >
-       <widget class="QLineEdit" name="findEdit" />
+     <layout class="QGridLayout">
+      <item row="0" column="0">
+       <widget class="QLineEdit" name="findEdit"/>
       </item>
-      <item row="1" column="0" >
-       <widget class="QCheckBox" name="checkBox" >
-        <property name="text" >
-         <string>Uwzględniaj wielkość liter</string>
+      <item row="1" column="0">
+       <widget class="QCheckBox" name="checkBox">
+        <property name="text">
+         <string>Match character size</string>
         </property>
        </widget>
       </item>
      </layout>
     </widget>
    </item>
-   <item row="1" column="0" colspan="2" >
-    <widget class="QGroupBox" name="groupBox_2" >
-     <property name="title" >
-      <string>Zamień</string>
+   <item row="1" column="0" colspan="2">
+    <widget class="QGroupBox" name="groupBox_2">
+     <property name="title">
+      <string>Replace</string>
      </property>
-     <layout class="QGridLayout" >
-      <item row="0" column="0" >
-       <widget class="QLineEdit" name="replaceEdit" />
+     <layout class="QGridLayout">
+      <item row="0" column="0">
+       <widget class="QLineEdit" name="replaceEdit"/>
       </item>
      </layout>
     </widget>
    </item>
-   <item row="2" column="0" >
-    <widget class="QPushButton" name="replaceButton" >
-     <property name="text" >
-      <string>Zamień</string>
+   <item row="2" column="0">
+    <widget class="QPushButton" name="replaceButton">
+     <property name="text">
+      <string>Replace</string>
      </property>
     </widget>
    </item>
-   <item row="2" column="1" >
-    <widget class="QPushButton" name="closeButton" >
-     <property name="text" >
-      <string>Zamknij</string>
+   <item row="2" column="1">
+    <widget class="QPushButton" name="closeButton">
+     <property name="text">
+      <string>Match font size</string>
      </property>
     </widget>
    </item>

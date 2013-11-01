@@ -88,19 +88,19 @@ statDialog::statDialog(const QList < DreamDocument > *docList)
   // wypelniamy dane:
   QString n;
   n.setNum(allDocs);
-  ui.label->setText(tr("wszystkich snów: ") + n);
+  ui.label->setText(tr("All dreams: ") + n);
   n.setNum(lucidDocs);
-  ui.label_6->setText(tr("świadomych snów: ") + n);
+  ui.label_6->setText(tr("Lucid dreams: ") + n);
   n.setNum(allScored);
-  ui.label_2->setText(tr("ocenionych snów: ") + n);
+  ui.label_2->setText(tr("Evaluated dreams: ") + n);
   n.setNum(allAvg);
-  ui.label_3->setText(tr("średnia ocen: ") + n + "/10");
+  ui.label_3->setText(tr("Average score: ") + n + "/10");
   n.setNum(allMax);
-  ui.label_4->setText(tr("najwyższa ocena: ") + n + "/10");
+  ui.label_4->setText(tr("Highest score: ") + n + "/10");
   n.setNum(allMin);
-  ui.label_5->setText(tr("najniższa ocena: ") + n + "/10");
+  ui.label_5->setText(tr("Lowest score: ") + n + "/10");
   n.setNum(scoredList->count());
-  ui.groupBox_2->setTitle(tr("Dane na podstawie ") + n + tr(" dni"));
+  ui.groupBox_2->setTitle(tr("Statistics collected from ") + n + tr(" days"));
   // udostepniamy grafik jezeli jest 7 roznych dat
   if(scoredList->count() >= 7)
   {
@@ -174,8 +174,8 @@ void statDialog::paintEvent(QPaintEvent *)
     paint.fillRect(x, y, w, h, QBrush(QColor(0, 0, 0)));
 
     drawGraph(x, y + 20, w, h - 50, scr, slp);
-    paint.drawText(x + w - 50, y + h - 50, tr("data"));
-    paint.drawText(x + 5, y + 15, tr("godz./ocena"));
+    paint.drawText(x + w - 50, y + h - 50, tr("date"));
+    paint.drawText(x + 5, y + 15, tr("time/evaluation"));
     pen.setColor(QColor(0, 255, 0));
     pen.setWidth(2);
     paint.setPen(pen);
@@ -186,8 +186,8 @@ void statDialog::paintEvent(QPaintEvent *)
 
     pen.setColor(QColor(255, 255, 255));
     paint.setPen(pen);
-    paint.drawText(x + 70, y + h - 20, tr("czas snu"));
-    paint.drawText(x + 70, y + h - 40, tr("oceny"));
+    paint.drawText(x + 70, y + h - 20, tr("sleeping time"));
+    paint.drawText(x + 70, y + h - 40, tr("Notes"));
 
   }
 
@@ -310,7 +310,7 @@ detailDialog::detailDialog(const QList < DreamDocument > *docsList)
   QGridLayout *grid = new QGridLayout(this);
   QTableWidget *table = new QTableWidget(this);
   grid->addWidget(table, 0, 0, 1, 1);
-  setWindowTitle(tr("Zestawienie szczegółowe"));
+  setWindowTitle(tr("Show details"));
   table->setColumnCount(8);
   table->setRowCount(docsList->count());
   table->setAlternatingRowColors(true);
@@ -320,31 +320,31 @@ detailDialog::detailDialog(const QList < DreamDocument > *docsList)
   table->setHorizontalHeaderItem(0, colItem);
 
   QTableWidgetItem *colItem2 = new QTableWidgetItem();
-  colItem2->setText(tr("Tytuł"));
+  colItem2->setText(tr("Title"));
   table->setHorizontalHeaderItem(1, colItem2);
 
   QTableWidgetItem *colItem3 = new QTableWidgetItem();
-  colItem3->setText(tr("Godz. zaś."));
+  colItem3->setText(tr("Falling asleep time."));
   table->setHorizontalHeaderItem(2, colItem3);
 
   QTableWidgetItem *colItem4 = new QTableWidgetItem();
-  colItem4->setText(tr("Godz. przeb."));
+  colItem4->setText(tr("Waking up time."));
   table->setHorizontalHeaderItem(3, colItem4);
 
   QTableWidgetItem *colItem5 = new QTableWidgetItem();
-  colItem5->setText(tr("Czas snu"));
+  colItem5->setText(tr("Dreaming time"));
   table->setHorizontalHeaderItem(4, colItem5);
 
   QTableWidgetItem *colItem6 = new QTableWidgetItem();
-  colItem6->setText(tr("Ocena"));
+  colItem6->setText(tr("Note"));
   table->setHorizontalHeaderItem(5, colItem6);
 
   QTableWidgetItem *colItem7 = new QTableWidgetItem();
-  colItem7->setText(tr("Świadomy"));
+  colItem7->setText(tr("Lucid"));
   table->setHorizontalHeaderItem(6, colItem7);
 
   QTableWidgetItem *colItem8 = new QTableWidgetItem();
-  colItem8->setText(tr("Długość opisu"));
+  colItem8->setText(tr("Description length"));
   table->setHorizontalHeaderItem(7, colItem8);
 
   // ------------------------------------
@@ -398,9 +398,9 @@ detailDialog::detailDialog(const QList < DreamDocument > *docsList)
 
     // swiadomy
     if(docsList->at(i).lucid)
-      strh = tr("tak");
+      strh = tr("yes");
     else
-      strh = tr("nie");
+      strh = tr("no");
     item = new QTableWidgetItem(strh);
     table->setItem(i, 6, item);
 

@@ -123,6 +123,7 @@ MainForm::MainForm()
 
   connect(ui.actionPl, SIGNAL(triggered()), this, SLOT(aLangPl()));
   connect(ui.actionEn, SIGNAL(triggered()), this, SLOT(aLangEn()));
+  connect(ui.actionRu, SIGNAL(triggered()), this, SLOT(aLangRu()));
   connect(ui.actionLang, SIGNAL(triggered()), this, SLOT(aLangOther()));
 
   connect(ui.actionDefaultView, SIGNAL(triggered()), this,
@@ -232,12 +233,12 @@ void MainForm::init()
   if(config.dockHidden)
   {
     ui.dockWidget->hide();
-    ui.actionDockShowHide->setText(tr("Pokaż archiwum"));
+    ui.actionDockShowHide->setText(tr("Show archives"));
   }
   else
   {
     ui.dockWidget->show();
-    ui.actionDockShowHide->setText(tr("Ukryj archiwum"));
+    ui.actionDockShowHide->setText(tr("Hide archives"));
     if(config.dockFloating)
       ui.dockWidget->setFloating(true);
     ui.dockWidget->setGeometry(config.dockX, config.dockY,
@@ -292,13 +293,13 @@ void MainForm::loadIcons()
   ui.actionManual->setIcon(QIcon(themePath + "help.png"));
 
   ui.newKeyButton->setText("");
-  ui.newKeyButton->setToolTip(tr("Dodaj klucz..."));
+  ui.newKeyButton->setToolTip(tr("Add key..."));
   ui.newKeyButton->setIcon(QIcon(themePath + "addkey.png"));
   ui.addNewSynonymButton->setText("");
-  ui.addNewSynonymButton->setToolTip(tr("Dodaj synonim..."));
+  ui.addNewSynonymButton->setToolTip(tr("Add synonym..."));
   ui.addNewSynonymButton->setIcon(QIcon(themePath + "addsynonym.png"));
   ui.deleteNewKeyButton->setText("");
-  ui.deleteNewKeyButton->setToolTip(tr("Usuń klucz..."));
+  ui.deleteNewKeyButton->setToolTip(tr("Delete key..."));
   ui.deleteNewKeyButton->setIcon(QIcon(themePath + "deletekey.png"));
 
   ui.actionAbout->setIcon(QIcon(exePath + "/themes/winicon.png"));
@@ -405,12 +406,12 @@ void MainForm::closeEvent(QCloseEvent * e)
   {
     if(changed)
     {
-      int q = QMessageBox::question(this, tr("Zamknij"),
-				    tr
-				    ("Aktualnie otwarty dokument został zmieniony, zapisać zmiany?"),
-				    tr("Zapisz"),
-				    tr("Nie zapisuj"),
-				    tr("Anuluj"));
+      int q = QMessageBox::question(this, tr("Quit"),
+                    tr
+                    ("The current document has changed, save changes?"),
+                    tr("Save"),
+                    tr("Don't save"),
+                    tr("Cancel"));
 
       if(q == 0)
 	aSave();
@@ -507,10 +508,10 @@ void MainForm::suggestionMessage(Suggestion * suggestion, QString time)
   if(suggestion->occ == -1)
   {
     if(counter->custom)
-      trayIcon->showMessage(tr("My Dream Diary: Sugestia (") +
-			    time + ")",
-			    tr
-			    ("Nie utworzono żadnych sugestii z bieżącego archiwum"));
+      trayIcon->showMessage(tr("My Dream Diary: Suggestion (") +
+                time + ")",
+                tr
+                ("No suggestion were made from current archives"));
   }
   else
   {
@@ -519,47 +520,47 @@ void MainForm::suggestionMessage(Suggestion * suggestion, QString time)
     switch (config.sugtime)
     {
     case week:
-      trayIcon->showMessage(tr("My Dream Diary: Sugestia (") +
-			    time + ")",
-			    tr("Wyrażenie \"") +
-			    suggestion->name +
-			    tr
-			    ("\" wystąpiło w ciągu ostatniego tygodnia ")
-			    + n +
-			    tr
-			    (" razy, sugeruje utworzenie znaku snu (klucza). \n (kliknij aby podjąć działanie)"),
-			    QSystemTrayIcon::Information, 20000);
+      trayIcon->showMessage(tr("My Dream Diary: Suggestion (") +
+                time + ")",
+                tr("The \"") +
+                suggestion->name +
+                tr
+                ("\" appeared in last week ")
+                + n +
+                tr
+                (" times. I suggest to make a dream sign (key). \n (click here for more...)"),
+                QSystemTrayIcon::Information, 20000);
       break;
     case month:
-      trayIcon->showMessage(tr("My Dream Diary: Sugestia (") +
-			    time + ")",
-			    tr("Wyrażenie \"") +
-			    suggestion->name +
-			    tr
-			    ("\" wystąpiło w ciągu ostatniego miesiąca ")
-			    + n +
-			    tr
-			    (" razy, sugeruje utworzenie znaku snu (klucza). \n (kliknij aby podjąć działanie)"),
-			    QSystemTrayIcon::Information, 20000);
+      trayIcon->showMessage(tr("My Dream Diary: Suggestion (") +
+                time + ")",
+                tr("The \"") +
+                suggestion->name +
+                tr
+                ("\" appeared in last month ")
+                + n +
+                tr
+                (" times. I suggest to make a dream sign (key). \n (click here for more...)"),
+                QSystemTrayIcon::Information, 20000);
       break;
     case all:
-      trayIcon->showMessage(tr("My Dream Diary: Sugestia (") +
-			    time + ")",
-			    tr("Wyrażenie \"") +
-			    suggestion->name +
-			    tr("\" wystąpiło w Twoich snach ")
-			    + n +
-			    tr
-			    (" razy, sugeruje utworzenie znaku snu (klucza). \n (kliknij aby podjąć działanie)"),
-			    QSystemTrayIcon::Information, 20000);
+      trayIcon->showMessage(tr("My Dream Diary: Suggestion (") +
+                time + ")",
+                tr("The \"") +
+                suggestion->name +
+                tr("\" appeared in Your dreams ")
+                + n +
+                tr
+                (" times. I suggest to make a dream sign (key). \n (click here for more...)"),
+                QSystemTrayIcon::Information, 20000);
       break;
     }
   }
   counter->custom = false;
 }
 
-// ----------------------------------------------------------------------------------------------- 
-// 
+// -----------------------------------------------------------------------------------------------
+//
 void MainForm::checkVersion()
 {
   QUrl url(config.update_url);
@@ -583,11 +584,11 @@ void MainForm::aNew()
 {
   if(changed)
   {
-    int q = QMessageBox::question(this, tr("Nowy dokument"),
-				  tr
-				  ("Aktualnie otwarty dokument został zmieniony, zapisać zmiany?"),
-				  tr("Zapisz"), tr("Nie zapisuj"),
-				  tr("Anuluj"));
+    int q = QMessageBox::question(this, tr("New document"),
+                  tr
+                  ("The current document has changed, save changes?"),
+                  tr("Save"), tr("Don't save"),
+                  tr("Cancel"));
 
     if(q == 0)
       aSave();
@@ -606,18 +607,18 @@ void MainForm::aOpenFile()
 {
   QString
     filename =
-    QFileDialog::getOpenFileName(this, tr("Otwórz plik"), ".",
-				 tr("Pliki programu My Dream Diary(*.md)"));
+    QFileDialog::getOpenFileName(this, tr("Open file"), ".",
+                 tr("My Dream Diary files (*.md)"));
   if(filename.isEmpty())
     return;
 
   if(changed)
   {
-    int q = QMessageBox::question(this, tr("Nowy dokument"),
-				  tr
-				  ("Aktualnie otwarty dokument został zmieniony, zapisać zmiany przed otwarciem nowego dokumentu?"),
-				  tr("Zapisz"), tr("Nie zapisuj"),
-				  tr("Anuluj"));
+    int q = QMessageBox::question(this, tr("New document"),
+                  tr
+                  ("The current document has changed, save changes before opening a new document?"),
+                  tr("Save"), tr("Don't save"),
+                  tr("Cancel"));
 
     if(q == 0)
       aSave();
@@ -627,10 +628,10 @@ void MainForm::aOpenFile()
 
   if(dreamBase->openFile(filename))
   {
-    QMessageBox::information(this, tr("Dodano plik"),
-			     tr
-			     ("Wskazany plik został dołączony do Twojego archiwum!"),
-			     QMessageBox::Ok);
+    QMessageBox::information(this, tr("Adding file complete"),
+                 tr
+                 ("The selected file was successfully added to your archive!"),
+                 QMessageBox::Ok);
     dreamBase->fillTree(ui.docTree);
   }
 }
@@ -641,7 +642,7 @@ void MainForm::aSave()
   bool expand = false;
 
   if(ui.titleEdit->text().isEmpty())
-    ui.titleEdit->setText(tr("(bez tytułu)"));
+    ui.titleEdit->setText(tr("(no title)"));
 
   DreamDocument newDoc;
   newDoc.ID = dreamBase->Current();
@@ -692,8 +693,8 @@ void MainForm::aSaveAs()
 {
   QString
     filename =
-    QFileDialog::getSaveFileName(this, tr("Zapisz plik"), ".",
-				 tr("plik programu My Dream Diary (*.md)"));
+    QFileDialog::getSaveFileName(this, tr("Save file"), ".",
+                 tr("My Dream Diary file (*.md)"));
   if(!filename.isEmpty())
     dreamBase->toFile(dreamBase->Current(), false, filename);
 }
@@ -701,10 +702,10 @@ void MainForm::aSaveAs()
 // -----------------------------------------------------------------------------------------------
 void MainForm::aDelete()
 {
-  int q = QMessageBox::question(this, tr("Usuń dokument"),
-				tr
-				("Na pewno chcesz usunąć aktualnie otwarty dokument?"),
-				tr("Usuń"), tr("Anuluj"));
+  int q = QMessageBox::question(this, tr("Delete document"),
+                tr
+                ("Do you want to remove the current document?"),
+                tr("Delete"), tr("Cancel"));
   if(q == 0)
   {
     int c = dreamBase->Current();
@@ -717,26 +718,26 @@ void MainForm::aDelete()
 // -----------------------------------------------------------------------------------------------
 void MainForm::aDeleteAll()
 {
-  int q = QMessageBox::question(this, tr("Usuń archiwum"),
-				tr
-				("Czy na pewno chcesz usunąć wszystkie dokumenty znajdujące się w Twoim archiwum?"),
-				tr("Usuń"), tr("Anuluj"));
+  int q = QMessageBox::question(this, tr("Delete archives"),
+                tr
+                ("Do you want to remove all documents in your archives?"),
+                tr("Delete"), tr("Cancel"));
   if(q == 0)
   {
     bool ok;
     QString
-      str = QInputDialog::getText(this, tr("Weryfikacja"),
-				  tr
-				  ("Aby potwierdzić Twoją tożsamość wprowadź hasło:"),
-				  QLineEdit::PasswordEchoOnEdit, "", &ok, 0);
+      str = QInputDialog::getText(this, tr("Verification"),
+                  tr
+                  ("To confirm your identity please retype your password:"),
+                  QLineEdit::PasswordEchoOnEdit, "", &ok, 0);
     QString
       hash = QCryptographicHash::hash(str.toUtf8(),
 				      QCryptographicHash::Md5).toHex();
     if(hash != config.passwd)
-      QMessageBox::warning(this, tr("Błąd"),
-			   tr
-			   ("Weryfikacja nie udana, błędne hasło!"),
-			   QMessageBox::Ok);
+      QMessageBox::warning(this, tr("Error"),
+               tr
+               ("Verification failed, wrong password!"),
+               QMessageBox::Ok);
     else
     {
       // kasowanie plikow data/*.md
@@ -764,11 +765,11 @@ void MainForm::aDeleteSelected()
   if(id == -1)
     return;
   QString title = ui.docTree->currentItem()->text(0);
-  int q = QMessageBox::question(this, tr("Usuń dokument"),
-				tr
-				("Na pewno chcesz usunąć dokument \"")
-				+ title + "\"?", tr("Usuń"),
-				tr("Anuluj"));
+  int q = QMessageBox::question(this, tr("Delete document"),
+                tr
+                ("Do you want to remove the document \"")
+                + title + "\"?", tr("Delete"),
+                tr("Cancel"));
   if(q == 0)
   {
 
@@ -784,8 +785,8 @@ void MainForm::aToHtml()
 
   QString
     filename =
-    QFileDialog::getSaveFileName(this, tr("Zapisz plik"), ".",
-				 tr("pliki html (*.html)"));
+    QFileDialog::getSaveFileName(this, tr("Save file"), ".",
+                 tr("html files (*.html)"));
   if(!filename.isEmpty())
     dreamBase->saveToHtml(filename);
 
@@ -796,8 +797,8 @@ void MainForm::aToFile()
 {
   QString
     filename =
-    QFileDialog::getSaveFileName(this, tr("Zapisz plik"), ".",
-				 tr("Archiwum My Dream Diary(*.mdd)"));
+    QFileDialog::getSaveFileName(this, tr("Save file"), ".",
+                 tr("My Dream Diary archives (*.mdd)"));
   if(filename.right(4) != ".mdd")
     filename += ".mdd";
 
@@ -810,15 +811,15 @@ void MainForm::aFromFile()
 {
   QString
     filename =
-    QFileDialog::getOpenFileName(this, tr("Otwórz plik"), ".",
-				 tr
-				 ("Archiwum My Dream Diary(*.mdd);;Wszystkie pliki (*.*)"));
+    QFileDialog::getOpenFileName(this, tr("Open file"), ".",
+                 tr
+                 ("My Dream Diary archives (*.mdd);;All files (*.*)"));
   if(!filename.isEmpty())
   {
-    int q = QMessageBox::question(this, tr("Aktualizacja bazy"),
-				  tr
-				  ("Wszystkie dotychczas utworzone dokumenty zostaną usunięte, czy na pewno chcesz kontynuować?"),
-				  tr("Importuj"), tr("Anuluj"));
+    int q = QMessageBox::question(this, tr("Updating base"),
+                  tr
+                  ("All documents in archives will be removed, do you want to continue?"),
+                  tr("Import"), tr("Cancel"));
     if(q == 0)
     {
       dreamBase->importFromFile(filename);
@@ -835,15 +836,15 @@ void MainForm::aFromDrm()
 {
   QString
     filename =
-    QFileDialog::getOpenFileName(this, tr("Otwórz plik"), ".",
-				 tr
-				 ("Archiwum My Dream Diary(*.drm);;Wszystkie pliki (*.*)"));
+    QFileDialog::getOpenFileName(this, tr("Open file"), ".",
+                 tr
+                 ("My Dream Diary archives (*.drm);;All files (*.*)"));
   if(!filename.isEmpty())
   {
-    int q = QMessageBox::question(this, tr("Aktualizacja bazy"),
-				  tr
-				  ("Wszystkie dotychczas utworzone dokumenty zostaną usunięte, czy na pewno chcesz kontynuować?"),
-				  tr("Importuj"), tr("Anuluj"));
+    int q = QMessageBox::question(this, tr("Updating base"),
+                  tr
+                  ("All documents in archives will be removed, do you want to continue?"),
+                  tr("Import"), tr("Cancel"));
     if(q == 0)
     {
       dreamBase->importFromDrm(filename);
@@ -869,8 +870,8 @@ void MainForm::aToFTP()
   ftp_dialog = NULL;
 }
 
-// ----------------------------------------------------------------------------------------------- 
-// 
+// -----------------------------------------------------------------------------------------------
+//
 void MainForm::aLogout()
 {
   this->close();
@@ -900,76 +901,76 @@ void MainForm::aLogout()
   }
 }
 
-// ----------------------------------------------------------------------------------------------- 
-// 
+// -----------------------------------------------------------------------------------------------
+//
 void MainForm::aLoadTemplate()
 {
   QString
     filename =
-    QFileDialog::getOpenFileName(this, tr("Otwórz plik wzorca"), ".",
-				 tr
-				 ("Wszystkie pliki(*.*);;Pliki HTML(*.html)"));
+    QFileDialog::getOpenFileName(this, tr("Load template file"), ".",
+                 tr
+                 ("All files(*.*);;HTML files(*.html)"));
   if(!filename.isEmpty())
   {
     QString tempfile = userPath + "template.html";
     if(QFile::exists(tempfile + ".old"))
     {
       if(!QFile::remove(tempfile + ".old"))
-	QMessageBox::critical(this, tr("Błąd"),
-			      tr
-			      ("Usuwanie starej kopii zapasowej nie powiodło się"),
-			      QMessageBox::Ok);
+    QMessageBox::critical(this, tr("Error"),
+                  tr
+                  ("Deleting backup files failed"),
+                  QMessageBox::Ok);
       if(!QFile::copy(tempfile, tempfile + ".old"))
-	QMessageBox::critical(this, tr("Błąd"),
-			      tr
-			      ("Tworzenie kopii zapasowej nie powiodło się"),
-			      QMessageBox::Ok);
+    QMessageBox::critical(this, tr("Error"),
+                  tr
+                  ("Making backup files faild"),
+                  QMessageBox::Ok);
     }
     if(QFile::exists(tempfile))
       if(!QFile::remove(tempfile))
-	QMessageBox::critical(this, tr("Błąd"),
-			      tr
-			      ("Usuwanie aktualnego archiwum nie powiodło się"),
-			      QMessageBox::Ok);
+    QMessageBox::critical(this, tr("Error"),
+                  tr
+                  ("Removing current archive faild"),
+                  QMessageBox::Ok);
     if(!QFile::copy(filename, tempfile))
-      QMessageBox::critical(this, tr("Błąd"),
-			    tr
-			    ("Import archiwum zakończony niepowodzeniem!"),
-			    QMessageBox::Ok);
+      QMessageBox::critical(this, tr("Error"),
+                tr
+                ("Archive import failed!"),
+                QMessageBox::Ok);
     else
-      QMessageBox::information(this, tr("Sukces"),
-			       tr
-			       ("Załadowano nowy szablon dokumentu!"),
-			       QMessageBox::Ok);
+      QMessageBox::information(this, tr("Success"),
+                   tr
+                   ("New document template has been added!"),
+                   QMessageBox::Ok);
   }
 }
 
 // -----------------------------------------------------------------------------------------------
 void MainForm::aDeleteProfile()
 {
-  int q = QMessageBox::question(this, tr("Usuń profil"),
-				tr
-				("Wszystkie dane oraz pliki konfiguracyjne tego profilu zostaną usunięte! Na pewno chcesz usunąć ten profil? "),
-				tr("Usuń"), tr("Anuluj"));
+  int q = QMessageBox::question(this, tr("Delete profile"),
+                tr
+                ("All data and configuration files will be removed! Do you want to delete this profile? "),
+                tr("Delete"), tr("Cancel"));
 
   if(q == 0)
   {
 
     bool ok;
     QString
-      str = QInputDialog::getText(this, tr("Weryfikacja"),
-				  tr
-				  ("Aby potwierdzić Twoją tożsamość wprowadź hasło:"),
-				  QLineEdit::PasswordEchoOnEdit, "", &ok, 0);
+      str = QInputDialog::getText(this, tr("Verification"),
+                  tr
+                  ("To confirm your identity please retype your password:"),
+                  QLineEdit::PasswordEchoOnEdit, "", &ok, 0);
     QString
       hash = QCryptographicHash::hash(str.toUtf8(),
 				      QCryptographicHash::Md5).toHex();
     if(hash != config.passwd)
     {
-      QMessageBox::warning(this, tr("Błąd"),
-			   tr
-			   ("Weryfikacja nie udana, błędne hasło!"),
-			   QMessageBox::Ok);
+      QMessageBox::warning(this, tr("Error"),
+               tr
+               ("Verification failed, wrong password!"),
+               QMessageBox::Ok);
       return;
     }
 
@@ -1093,14 +1094,14 @@ void MainForm::aSymbols()
 void MainForm::aCounterStart()
 {
   if(counter->isRunning())
-    trayIcon->showMessage(tr("Operacja niedozwolona"),
-			  tr
-			  ("Skaner sugestii jest aktualnie uruchomiony, nie można zacząć kolejnego przeszukiwania przed jego zakończeniem!"),
-			  QSystemTrayIcon::Warning);
+    trayIcon->showMessage(tr("Operation forbidden"),
+              tr
+              ("Suggestion scanner is already running!"),
+              QSystemTrayIcon::Warning);
   else
   {
-    trayIcon->showMessage(tr("Skaner sugestii"),
-			  tr("Przeszukiwanie archiwum rozpoczęte..."));
+    trayIcon->showMessage(tr("Suggestion scanner"),
+              tr("Archives scanning started..."));
     counter->setup(config.sugwords, config.sugignored, config.sugsens,
 		   config.sugtime, trayIcon, dreamBase);
     currentSuggestion->occ = -1;
@@ -1156,9 +1157,9 @@ void MainForm::aStats()
     stat_dialog = NULL;
   }
   else
-    QMessageBox::information(this, tr("Brak ocen"),
-			     tr("Za mało danych do statystyk"),
-			     QMessageBox::Ok);
+    QMessageBox::information(this, tr("No notes"),
+                 tr("There is not enough data to make statistics"),
+                 QMessageBox::Ok);
 }
 
 // -----------------------------------------------------------------------------------------------
@@ -1187,16 +1188,16 @@ void MainForm::aDefaultView()
   ui.dockWidget->setFloating(false);
   addDockWidget(Qt::LeftDockWidgetArea, ui.dockWidget);
   ui.dockWidget->show();
-  ui.actionDockShowHide->setText(tr("Ukryj archiwum"));
+  ui.actionDockShowHide->setText(tr("Hide archives"));
   ui.toolBar->show();
-  ui.actionToolBarShowHide->setText(tr("Ukryj pasek narzędzi"));
+  ui.actionToolBarShowHide->setText(tr("Hide tool bar"));
   ui.actionScale->setIcon(QIcon(themePath + "optimal_view.png"));
   if(full)
   {
     full = false;
-    ui.actionScale->setText(tr("Widok optymalny"));
-    ui.actionScale->setIconText(tr("Widok optymalny"));
-    ui.actionScale->setToolTip(tr("Widok optymalny"));
+    ui.actionScale->setText(tr("Optimal view"));
+    ui.actionScale->setIconText(tr("Optimal view"));
+    ui.actionScale->setToolTip(tr("Optimal view"));
   }
   QList < int > s1, s2;
   s1 << 273 << 206;
@@ -1209,29 +1210,36 @@ void MainForm::aDefaultView()
 // -----------------------------------------------------------------------------------------------
 void MainForm::aLangEn()
 {
-  QFile::remove(exePath + "/locale/current.qm");
-  if((!QFile::copy
-      (exePath + "/locale/en.qm", exePath + "/locale/current.qm"))
-     || (!QFile::exists(exePath + "/locale/en.qm")))
-    QMessageBox::critical(this, tr("Błąd"),
-			  tr
-			  ("Tworzenie kopii pliku tłumaczenia nie powiodło się! Sprawdź katalog 'locale'."),
-			  QMessageBox::Ok);
-  else
-    QMessageBox::information(this, tr("informacja"),
-			     tr
-			     ("Zastosowane zmiany będą widoczne dopiero po ponownym uruchomieniu programu."),
-			     QMessageBox::Ok);
+    changeLanguageTo("en");
 }
 
 // -----------------------------------------------------------------------------------------------
 void MainForm::aLangPl()
 {
-  if(QFile::remove(exePath + "/locale/current.qm"))
-    QMessageBox::information(this, tr("informacja"),
-			     tr
-			     ("Zastosowane zmiany będą widoczne dopiero po ponownym uruchomieniu programu."),
-			     QMessageBox::Ok);
+    changeLanguageTo("pl");
+}
+
+// -----------------------------------------------------------------------------------------------
+void MainForm::aLangRu()
+{
+    changeLanguageTo("ru");
+}
+
+// -----------------------------------------------------------------------------------------------
+void MainForm::changeLanguageTo(QString LanguageISOCode)
+{
+    QFile::remove(exePath + "/locale/current.qm");
+    if(LanguageISOCode != "en")
+        if((!QFile::copy(exePath + "/locale/" + LanguageISOCode + ".qm",
+                         exePath + "/locale/current.qm")) ||
+           (!QFile::exists(exePath + "/locale/" + LanguageISOCode + ".qm")))
+          QMessageBox::critical(this, tr("Error"),
+                    tr("Copying translation file failed! Please check the 'locale' directory."),
+                    QMessageBox::Ok);
+        else
+          QMessageBox::information(this, tr("information"),
+                       tr("All changes will be available after application restart."),
+                       QMessageBox::Ok);
 }
 
 // -----------------------------------------------------------------------------------------------
@@ -1239,21 +1247,21 @@ void MainForm::aLangOther()
 {
   QString
     filename =
-    QFileDialog::getOpenFileName(this, tr("Otwórz plik"), ".",
-				 tr("Plik tłumaczenia QT(*.qm)"));
+    QFileDialog::getOpenFileName(this, tr("Open file"), ".",
+                 tr("QT translation file (*.qm)"));
   if(!filename.isEmpty())
   {
     QFile::remove(exePath + "/locale/current.qm");
     if(QFile::link(filename, exePath + "/locale/current.qm"))
-      QMessageBox::information(this, tr("informacja"),
-			       tr
-			       ("Zastosowane zmiany będą widoczne dopiero po ponownym uruchomieniu programu."),
-			       QMessageBox::Ok);
+      QMessageBox::information(this, tr("information"),
+                   tr
+                   ("All changes will be available after application restart."),
+                   QMessageBox::Ok);
     else
-      QMessageBox::critical(this, tr("Błąd"),
-			    tr
-			    ("Tworzenie dowiązania symbolicznego nie powiodło się! Sprawdź katalog 'locale'."),
-			    QMessageBox::Ok);
+      QMessageBox::critical(this, tr("Error"),
+                tr
+                ("Creating symbolic link failed! Please check the 'locale' directory."),
+                QMessageBox::Ok);
   }
 }
 
@@ -1261,7 +1269,7 @@ void MainForm::aLangOther()
 void MainForm::aDockLeft()
 {
   ui.dockWidget->show();
-  ui.actionDockShowHide->setText(tr("Ukryj archiwum"));
+  ui.actionDockShowHide->setText(tr("Hide archives"));
   if(ui.dockWidget->isFloating())
     ui.dockWidget->setFloating(false);
 
@@ -1272,7 +1280,7 @@ void MainForm::aDockLeft()
 void MainForm::aDockRight()
 {
   ui.dockWidget->show();
-  ui.actionDockShowHide->setText(tr("Ukryj archiwum"));
+  ui.actionDockShowHide->setText(tr("Hide archives"));
   if(ui.dockWidget->isFloating())
     ui.dockWidget->setFloating(false);
 
@@ -1283,7 +1291,7 @@ void MainForm::aDockRight()
 void MainForm::aDockFloat()
 {
   ui.dockWidget->show();
-  ui.actionDockShowHide->setText(tr("Ukryj archiwum"));
+  ui.actionDockShowHide->setText(tr("Hide archives"));
   if(!ui.dockWidget->isFloating())
     ui.dockWidget->setFloating(true);
 }
@@ -1308,9 +1316,9 @@ void MainForm::addNewKey()
 {
   bool ok;
   QString
-    keyname = QInputDialog::getText(this, tr("Nowy klucz"),
-				    tr("Wprowadź nowy klucz:"),
-				    QLineEdit::Normal, "", &ok);
+    keyname = QInputDialog::getText(this, tr("New key"),
+                    tr("Please enter new key:"),
+                    QLineEdit::Normal, "", &ok);
 
   if(ok)
   {
@@ -1349,11 +1357,11 @@ void MainForm::addNewSynonym()
     return;
 
   QString
-    keyname = QInputDialog::getText(this, tr("Nowy klucz"),
-				    tr
-				    ("Wprowadź nowy synonim dla klucza \"")
-				    + parent + "\"",
-				    QLineEdit::Normal, "", &ok);
+    keyname = QInputDialog::getText(this, tr("New key"),
+                    tr
+                    ("Please enter a new synonym for key \"")
+                    + parent + "\"",
+                    QLineEdit::Normal, "", &ok);
 
   if(ok)
   {
@@ -1388,10 +1396,10 @@ void MainForm::insertNewKey()
 // -----------------------------------------------------------------------------------------------
 void MainForm::webFind()
 {
-  int q = QMessageBox::question(this, tr("Pytanie"),
-				tr
-				("Za chwilę program uruchomi zdefiniowaną przeglądarkę internetową. Czy chcesz kontynuować?"),
-				tr("Uruchom"), tr("Anuluj"));
+  int q = QMessageBox::question(this, tr("Question"),
+                tr
+                ("The application will run the defined internet browser. Do you want to continue?"),
+                tr("Activate"), tr("Cancel"));
 
   if(q == 1)
     return;
@@ -1399,10 +1407,10 @@ void MainForm::webFind()
   if(!QFile::exists(config.browserPath))
   {
     QMessageBox::critical(this,
-			  tr("Nie można uruchomić przeglądarki"),
-			  tr
-			  ("Wskazany plik nie istnieje! Aby skorzystać z tej funkcji zdefiniuj Twoją przeglądarkę"),
-			  QMessageBox::Ok);
+              tr("Activating browser failed"),
+              tr
+              ("The selected file doesn't exists! To use this function please define your internet browser"),
+              QMessageBox::Ok);
     aSettings();
   }
 
@@ -1411,10 +1419,10 @@ void MainForm::webFind()
   int i = command.indexOf("#exp#");
   if(i == -1)
     QMessageBox::warning(this,
-			 tr("Nie można uruchomić przeglądarki"),
-			 tr
-			 ("Nie znaleziono wymaganego wyrażenia #exp#, sprawdź poprawność pliku konfiguracyjnego"),
-			 QMessageBox::Ok);
+             tr("Activating browser failed"),
+             tr
+             ("The #exp# phrase is missing! Please check the propriety of tke configuration file"),
+             QMessageBox::Ok);
   else
   {
     command.replace(i, 5, exp);
@@ -1433,18 +1441,18 @@ void MainForm::deleteKey()
   QString keyname = ui.keysTree->currentItem()->text(0);
   int q = -1;
   if(ui.keysTree->currentItem()->text(2) == "M")
-    q = QMessageBox::question(this, tr("Potwierdź"),
-			      tr
-			      ("Czy na pewno chcesz usunąć klucz \"")
-			      + keyname +
-			      tr
-			      ("\" oraz wszystkie jego synonimy?"),
-			      tr("Usuń"), tr("Anuluj"));
+    q = QMessageBox::question(this, tr("Confirm"),
+                  tr
+                  ("Do you want to remove the key \"")
+                  + keyname +
+                  tr
+                  ("\" and all his synonyms?"),
+                  tr("Delete"), tr("Cancel"));
   else
-    q = QMessageBox::question(this, tr("Potwierdź"),
-			      tr
-			      ("Czy na pewno chcesz usunąć klucz (synonim) \"")
-			      + keyname + "\"?", tr("Usuń"), tr("Anuluj"));
+    q = QMessageBox::question(this, tr("Confirm"),
+                  tr
+                  ("Do you want to remove the key (synonym) \"")
+                  + keyname + "\"?", tr("Delete"), tr("Cancel"));
   if(q == 0)
   {
     if(ui.keysTree->currentItem()->text(2) == "M")
@@ -1469,10 +1477,10 @@ void MainForm::deleteKey()
 // -----------------------------------------------------------------------------------------------
 void MainForm::deleteAllKeys()
 {
-  int q = QMessageBox::question(this, tr("Potwierdź"),
-				tr
-				("Czy na pewno chcesz usunąć wszystkie klucze?"),
-				tr("Usuń"), tr("Anuluj"));
+  int q = QMessageBox::question(this, tr("Confirm"),
+                tr
+                ("Do you want to remove all keys?"),
+                tr("Delete"), tr("Cancel"));
   if(q == 0)
   {
 
@@ -1493,11 +1501,11 @@ void MainForm::renameKey()
   QString keyname = ui.keysTree->currentItem()->text(0);
   bool ok;
   QString
-    newname = QInputDialog::getText(this, tr("Przemianuj klucz"),
-				    tr
-				    ("Wprowadź nową nazwę dla klucza \"")
-				    + keyname + "\"",
-				    QLineEdit::Normal, "", &ok);
+    newname = QInputDialog::getText(this, tr("Rename key"),
+                    tr
+                    ("Please enter a new name for the key \"")
+                    + keyname + "\"",
+                    QLineEdit::Normal, "", &ok);
   if(!ok)
     return;
   dreamBase->keys->rename(keyname, newname);
@@ -1516,29 +1524,29 @@ void MainForm::aScale()
     if(!ui.dockWidget->isFloating())
     {
       ui.dockWidget->hide();
-      ui.actionDockShowHide->setText(tr("Pokaż archiwum"));
+      ui.actionDockShowHide->setText(tr("Show archives"));
     }
     QList < int > s;
     s << 600 << 0;
     ui.splitter_2->setSizes(s);
     ui.actionScale->setIcon(QIcon(themePath + "standard_view.png"));
     full = true;
-    ui.actionScale->setText(tr("Widok standardowy"));
-    ui.actionScale->setIconText(tr("Widok standardowy"));
-    ui.actionScale->setToolTip(tr("Widok standardowy"));
+    ui.actionScale->setText(tr("Standard view"));
+    ui.actionScale->setIconText(tr("Standard view"));
+    ui.actionScale->setToolTip(tr("Standard view"));
   }
   else
   {
     ui.dockWidget->show();
-    ui.actionDockShowHide->setText(tr("Ukryj archiwum"));
+    ui.actionDockShowHide->setText(tr("Hide archives"));
     QList < int > s;
     s << 341 << 141;
     ui.splitter_2->setSizes(s);
     ui.actionScale->setIcon(QIcon(themePath + "optimal_view.png"));
     full = false;
-    ui.actionScale->setText(tr("Widok optymalny"));
-    ui.actionScale->setIconText(tr("Widok optymalny"));
-    ui.actionScale->setToolTip(tr("Widok optymalny"));
+    ui.actionScale->setText(tr("Optimal view"));
+    ui.actionScale->setIconText(tr("Optimal view"));
+    ui.actionScale->setToolTip(tr("Optimal view"));
   }
 }
 
@@ -1554,19 +1562,19 @@ void MainForm::aManual()
   if(!QFile::exists(config.browserPath))
   {
     QMessageBox::critical(this,
-			  tr("Nie można uruchomić przeglądarki"),
-			  tr
-			  ("Wskazany plik nie istnieje! Aby skorzystać z tej funkcji zdefiniuj Twoją przeglądarkę"),
-			  QMessageBox::Ok);
+              tr("Activating browser failed"),
+              tr
+              ("The selected file doesn't exists! To use this function please define your internet browser"),
+              QMessageBox::Ok);
     aSettings();
   }
-  
+
   QProcess *man = new QProcess;
   man->start("\""+config.browserPath + "\" \"file://" + exePath + "/doc/manual.html\"");
 }
 
-// ----------------------------------------------------------------------------------------------- 
-// 
+// -----------------------------------------------------------------------------------------------
+//
 void MainForm::treeItemClicked()
 {
   int id = ui.docTree->currentItem()->text(1).toInt();
@@ -1575,11 +1583,11 @@ void MainForm::treeItemClicked()
 
   if(changed)
   {
-    int q = QMessageBox::question(this, tr("Otworz dokument"),
-				  tr
-				  ("Aktualnie otwarty dokument został zmieniony, zapisać zmiany przed otwarciem nowego dokumentu?"),
-				  tr("Zapisz"), tr("Nie zapisuj"),
-				  tr("Anuluj"));
+    int q = QMessageBox::question(this, tr("Open document"),
+                  tr
+                  ("The current document has changed, save changes before opening a new document?"),
+                  tr("Save"), tr("Don't save"),
+                  tr("Cancel"));
 
     if(q == 0)
       aSave();
@@ -1598,12 +1606,12 @@ void MainForm::aDockShowHide()
   if(ui.dockWidget->isHidden())
   {
     ui.dockWidget->show();
-    ui.actionDockShowHide->setText(tr("Ukryj archiwum"));
+    ui.actionDockShowHide->setText(tr("Hide archives"));
   }
   else
   {
     ui.dockWidget->hide();
-    ui.actionDockShowHide->setText(tr("Pokaż archiwum"));
+    ui.actionDockShowHide->setText(tr("Show archives"));
   }
 }
 
@@ -1756,9 +1764,9 @@ void MainForm::aSearch()
 {
   bool ok;
   QString
-    exp = QInputDialog::getText(this, tr("Wyszukaj"),
-				tr("Podaj tytuł szukanego dokumentu"),
-				QLineEdit::Normal, "", &ok, 0);
+    exp = QInputDialog::getText(this, tr("Search"),
+                tr("Please enter the title of the document"),
+                QLineEdit::Normal, "", &ok, 0);
 
   if(ok)
   {
@@ -1769,10 +1777,10 @@ void MainForm::aSearch()
       dreamBase->expandDoc(list.at(i), ui.docTree);
 
     exp = exp.setNum(list.size());
-    QMessageBox::information(this, tr("Zakończono"),
-			     tr
-			     ("Przeszukiwanie zakończone. Znaleziono pasujących dokumentów: ")
-			     + exp, QMessageBox::Ok);
+    QMessageBox::information(this, tr("Finish"),
+                 tr
+                 ("File searching finished. The number of matching documents is: ")
+                 + exp, QMessageBox::Ok);
   }
 
 }
@@ -1782,10 +1790,10 @@ void MainForm::aSearchContent()
 {
   bool ok;
   QString
-    exp = QInputDialog::getText(this, tr("Wyszukaj"),
-				tr
-				("Podaj treść szukanego dokumentu"),
-				QLineEdit::Normal, "", &ok, 0);
+    exp = QInputDialog::getText(this, tr("Search"),
+                tr
+                ("Please enter the contents of the document"),
+                QLineEdit::Normal, "", &ok, 0);
 
   if(ok)
   {
@@ -1796,10 +1804,10 @@ void MainForm::aSearchContent()
       dreamBase->expandDoc(list.at(i), ui.docTree);
 
     exp.setNum(list.size());
-    QMessageBox::information(this, tr("Zakończono"),
-			     tr
-			     ("Przeszukiwanie zakończone. Znaleziono pasujących dokumentów: ")
-			     + exp, QMessageBox::Ok);
+    QMessageBox::information(this, tr("Finish"),
+                 tr
+                 ("File searching finished. The number of matching documents is: ")
+                 + exp, QMessageBox::Ok);
   }
 }
 
@@ -1841,11 +1849,11 @@ void MainForm::messageClicked()
     return;
   // ======
   int q;
-  q = QMessageBox::question(this, tr("Sugestia"),
-			    tr
-			    ("Zasugerowano utworzenie klucza z wyrażenia \"")
-			    + currentSuggestion->name + "\"",
-			    tr("Utwórz klucz"), tr("Dodaj do ignorowanych"));
+  q = QMessageBox::question(this, tr("Suggestion"),
+                tr
+                ("It is suggested to create a key from the expression: \"")
+                + currentSuggestion->name + "\"",
+                tr("Create key"), tr("Add to ignored"));
 
   if(q == 0)
   {
@@ -1896,10 +1904,10 @@ void MainForm::httpReadyRead()
   QString http_ver = httpdata.mid(b, e - b);
   if(http_ver != VER)
   {
-    QMessageBox::information(this, tr("Uaktualnienie"),
-			     tr
-			     ("Najnowszą wersją programu My Dream Diary jest wersja ")
-			     + http_ver, QMessageBox::Ok);
+    QMessageBox::information(this, tr("Update"),
+                 tr
+                 ("The latest version of My Dream Diary is ")
+                 + http_ver, QMessageBox::Ok);
   }
 
   b = httpdata.indexOf(path_tag);

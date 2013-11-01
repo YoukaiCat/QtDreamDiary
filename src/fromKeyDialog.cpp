@@ -43,11 +43,11 @@ void fromKeyDialog::pushButton()
     for(int i = 0; i < parent->symbolList.count(); i++)
       if(exp == parent->symbolList.at(i).name)
       {
-	QMessageBox::warning(this, tr("Ostrzeżenie"),
-			     tr
-			     ("Podany symbol już istnieje!"),
-			     QMessageBox::Ok);
-	return;
+    QMessageBox::warning(this, tr("Warning"),
+                 tr
+                 ("The selected symbol already exists!"),
+                 QMessageBox::Ok);
+    return;
       }
 
     TSymbol tmp;
@@ -60,6 +60,6 @@ void fromKeyDialog::pushButton()
     this->close();
   }
   else
-    QMessageBox::warning(this, tr("Ostrzeżenie"),
-			 tr("Nie wybrano wyrażenia!"), QMessageBox::Ok);
+    QMessageBox::warning(this, tr("Warning"),
+             tr("Select expression!"), QMessageBox::Ok);
 }

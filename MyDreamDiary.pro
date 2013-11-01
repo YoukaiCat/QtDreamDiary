@@ -3,7 +3,7 @@
 ######################################################################
 
 TEMPLATE = app
-TARGET = 
+TARGET =
 DEPENDPATH += . src ui
 INCLUDEPATH += . src
 
@@ -55,4 +55,4 @@ SOURCES += src/aboutDialog.cpp \
            src/symbolDialog.cpp \
            src/vigcryp.cpp \
            src/xconfig.cpp
-TRANSLATIONS += src/en.ts
+TRANSLATIONS += src/pl.ts

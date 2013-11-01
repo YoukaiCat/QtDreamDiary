@@ -167,6 +167,8 @@ private:
   void aKeyAscSort();
   void aLangEn();
   void aLangPl();
+  void aLangRu();
+  void changeLanguageTo(QString);
   void aLangOther();
 
   //---------------------------

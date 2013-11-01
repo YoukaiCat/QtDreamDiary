@@ -102,19 +102,19 @@ void loginDialog::loginButtonClicked()
   // sprawdzamy czy pola sa wypelnione
   if((login.isEmpty()) || (password.isEmpty()))
   {
-    QMessageBox::warning(this, tr("Błąd"),
-			 tr
-			 ("Nie wszystkie wymagane pola zostały wypełnione!"),
-			 QMessageBox::Ok);
+    QMessageBox::warning(this, tr("Error"),
+             tr
+             ("Please fill all required fields!"),
+             QMessageBox::Ok);
     return;
   }
   // sprawdzamy czy istnieje podany user
   QString userPath = mw->exePath + "/profiles/" + login + "/";
   if(!QFile::exists(userPath + "config.cfg"))
   {
-    QMessageBox::warning(this, tr("Błąd"),
-			 tr("Podany użytkownik nie istnieje!"),
-			 QMessageBox::Ok);
+    QMessageBox::warning(this, tr("Error"),
+             tr("User doesn't exists!"),
+             QMessageBox::Ok);
     return;
   }
   // wysylamy do glownego okna klucz szyfrowania i haslo
@@ -126,8 +126,8 @@ void loginDialog::loginButtonClicked()
 
   if(hash != config.passwd)
   {
-    QMessageBox::warning(this, tr("Błąd"),
-			 tr("Niepoprawne hasło!"), QMessageBox::Ok);
+    QMessageBox::warning(this, tr("Error"),
+             tr("Wrong password!"), QMessageBox::Ok);
     return;
   }
   else
@@ -175,10 +175,10 @@ void loginDialog::checkBoxChanged(int s)
   {
     savePass = true;
     ui.checkBox_2->setEnabled(true);
-    QMessageBox::information(this, tr("informacja"),
-			     tr
-			     ("Zezwalasz na zapis niezaszyfrowanych danych, każdy użytkownik tej stacji może mieć do nich dostęp."),
-			     QMessageBox::Ok);
+    QMessageBox::information(this, tr("information"),
+                 tr
+                 ("You chose to store unencoded data, every user of this station can access your archives."),
+                 QMessageBox::Ok);
   }
   else
   {

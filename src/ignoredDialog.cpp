@@ -27,11 +27,11 @@ ignoredDialog::ignoredDialog(MyDreamBase * Base, bool encoding)
   QVBoxLayout *lay = new QVBoxLayout(this);
   listWidget = new QListWidget(this);
   QPushButton *addButton = new QPushButton(this);
-  addButton->setText(tr("Dodaj"));
+  addButton->setText(tr("Add"));
   QPushButton *removeButton = new QPushButton(this);
-  removeButton->setText(tr("Usuń"));
+  removeButton->setText(tr("Delete"));
   QPushButton *closeButton = new QPushButton(this);
-  closeButton->setText(tr("Zamknij"));
+  closeButton->setText(tr("Close"));
 
   fillList();
 
@@ -49,9 +49,9 @@ void ignoredDialog::add()
 {
   bool ok;
   QString
-    str = QInputDialog::getText(this, tr("Sugestia ignorowana"),
-				tr("Wprowadź ignorowane wyrażenie:"),
-				QLineEdit::Normal, "", &ok);
+    str = QInputDialog::getText(this, tr("Suggestion ignored"),
+                tr("Please enter ignored expression:"),
+                QLineEdit::Normal, "", &ok);
   if(!ok)
     return;
   base->addIgnored(str);
