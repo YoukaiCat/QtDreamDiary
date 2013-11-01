@@ -19,6 +19,7 @@
  ***************************************************************************/
 
 #include "newDialog.h"
+#include <QDesktopServices>
 #include <QCryptographicHash>
 
 newDialogClass::newDialogClass(MainForm * parent)
@@ -34,8 +35,8 @@ void newDialogClass::pushButtonClicked()
 {
   QString username = ui.lineEdit->text();
   QString
-    userPath =
-    QCoreApplication::applicationDirPath() + "/profiles/" + username;
+    userPath = QDesktopServices::storageLocation(QDesktopServices::DataLocation) +
+               "/mdd/profiles/" + username;
   // lista dozwolonych znakow:
   QList < short int > chars;
   for(short int i = 48; i <= 57; i++)	// '0' - '9'
@@ -118,14 +119,17 @@ void newDialogClass::pushButtonClicked()
 				    QCryptographicHash::Md5).toHex();
 
   QDir dir;
-  if(!dir.exists(QCoreApplication::applicationDirPath() + "/profiles"))	// tworzenie 
+  QString dataPath = QDesktopServices::storageLocation(QDesktopServices::DataLocation);
+  if(!dir.exists(dataPath + "/mdd/profiles"))	// tworzenie
     // katalogu 
     // profiles 
     // jesli 
     // go 
     // nie 
     // ma
-    dir.mkdir(QCoreApplication::applicationDirPath() + "/profiles");
+    dir.mkpath(dataPath + "/mdd/profiles");
+  if(!dir.exists(dataPath + "/mdd/locale"))
+    dir.mkpath(dataPath + "/mdd/locale");
   dir.mkdir(userPath);		// tworzenie katalogu usera
   dir.mkdir(userPath + "/data");	// tworzenie katalogu dla
   // dokumentow

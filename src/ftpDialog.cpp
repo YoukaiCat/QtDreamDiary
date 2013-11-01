@@ -18,6 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#include <QDesktopServices>
 #include "ftpDialog.h"
 
 ftpDialog::ftpDialog(MainForm * parent)
@@ -81,12 +82,12 @@ void ftpDialog::upload()
   if(ftp->state() != QFtp::LoggedIn)
     ftp->login(login, password);
 
-  mw->dreamBase->exportToFile(mw->exePath + "/" + filename);
-  QFile file(mw->exePath + "/" + filename);
+  mw->dreamBase->exportToFile(QDesktopServices::storageLocation(QDesktopServices::HomeLocation) + filename);
+  QFile file(QDesktopServices::storageLocation(QDesktopServices::HomeLocation) + filename);
   if(file.open(QFile::ReadOnly | QFile::Text))
     ftp->put(file.readAll(), filename, QFtp::Ascii);
   ftp->close();
-  QFile::remove(mw->exePath + "/" + filename);
+  QFile::remove(QDesktopServices::storageLocation(QDesktopServices::HomeLocation) + filename);
   file.close();
 }
 
@@ -204,7 +205,7 @@ void ftpDialog::commandFinished(int, bool error)
     if(data.isEmpty())
       return;
 
-    QFile file(mw->exePath + "ftp.mdd");
+    QFile file(QDesktopServices::storageLocation(QDesktopServices::HomeLocation) + "/ftp.mdd");
     if(file.open(QFile::WriteOnly | QFile::Text))
     {
 
@@ -214,9 +215,9 @@ void ftpDialog::commandFinished(int, bool error)
 		       (mw->config.codecName.toLatin1()));
       ostream << data;
       file.close();
-      mw->dreamBase->importFromFile(mw->exePath + "ftp.mdd");
+      mw->dreamBase->importFromFile(QDesktopServices::storageLocation(QDesktopServices::HomeLocation) + "/ftp.mdd");
       mw->dreamBase->rewriteAll(mw->config.base_coding);
-      QFile::remove(mw->exePath + "ftp.mdd");
+      QFile::remove(QDesktopServices::storageLocation(QDesktopServices::HomeLocation) + "/ftp.mdd");
     }
     else
       QMessageBox::critical(this, tr("Error"),

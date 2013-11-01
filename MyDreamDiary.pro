@@ -3,7 +3,7 @@
 ######################################################################
 
 TEMPLATE = app
-TARGET =
+TARGET = MyDreamDiary
 DEPENDPATH += . src ui
 INCLUDEPATH += . src
 
@@ -56,3 +56,20 @@ SOURCES += src/aboutDialog.cpp \
            src/vigcryp.cpp \
            src/xconfig.cpp
 TRANSLATIONS += src/pl.ts
+
+TARGET.files = MyDreamDiary
+FILES.files = themes/ locale/ doc/
+
+isEmpty(PREFIX) {
+
+} else {
+    mac|unix {
+        TARGET.path = $$PREFIX/usr/bin
+        FILES.path = $$PREFIX/usr/share/mdd/
+    } else {
+        TARGET.path = $$PREFIX/bin
+        FILES.path = $$PREFIX/
+    }
+    DEFINES += INSTALLATION_PREFIX=\\\"$${FILES.path}\\\"
+    INSTALLS += TARGET FILES
+}

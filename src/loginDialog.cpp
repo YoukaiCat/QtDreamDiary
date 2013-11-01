@@ -18,6 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#include <QDesktopServices>
 #include "loginDialog.h"
 
 loginDialog::loginDialog(MainForm * parent)
@@ -29,7 +30,7 @@ loginDialog::loginDialog(MainForm * parent)
   nd = NULL;
   // jesli ostatni profil byl zapamietany
   Last last;
-  if(last.load(mw->exePath + "/last"))
+  if(last.load(mw->lastLoginPath))
   {
     ui.loginEdit->setText(last.login);
     ui.passwordEdit->setText(last.passwd);
@@ -45,7 +46,8 @@ loginDialog::loginDialog(MainForm * parent)
   connect(ui.checkBox, SIGNAL(stateChanged(int)), this,
 	  SLOT(checkBoxChanged(int)));
   // ------------------------------------------------------------------------------------
-  QString userPath = mw->exePath + "/profiles/" + ui.loginEdit->text() + "/";
+  QString userPath = QDesktopServices::storageLocation(QDesktopServices::DataLocation) +
+                     "/mdd/profiles/" + ui.loginEdit->text() + "/";
 
   if(ui.checkBox->checkState() == Qt::Checked)
     ui.checkBox_2->setEnabled(true);	// nie potrzebne w
@@ -109,7 +111,8 @@ void loginDialog::loginButtonClicked()
     return;
   }
   // sprawdzamy czy istnieje podany user
-  QString userPath = mw->exePath + "/profiles/" + login + "/";
+  QString userPath = QDesktopServices::storageLocation(QDesktopServices::DataLocation) +
+                     "/mdd/profiles/" + login + "/";
   if(!QFile::exists(userPath + "config.cfg"))
   {
     QMessageBox::warning(this, tr("Error"),
@@ -142,15 +145,15 @@ void loginDialog::loginButtonClicked()
       else
 	last.autologin = false;
 
-      last.save(mw->exePath + "/last");
+      last.save(mw->lastLoginPath);
     }
     else
     {
       Last last;
-      if(last.load(mw->exePath + "/last"))
+      if(last.load(mw->lastLoginPath))
 	if(last.login == mw->username)
-	  if(QFile::exists(mw->exePath + "/last"))
-	    QFile::remove(mw->exePath + "/last");
+	  if(QFile::exists(mw->lastLoginPath))
+	    QFile::remove(mw->lastLoginPath);
     }
 
     mw->userPath = userPath;

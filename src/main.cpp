@@ -20,6 +20,7 @@
 
 #include <QApplication>
 #include <QTranslator>
+#include <QDesktopServices>
 #include "MainForm.h"
 #include "loginDialog.h"
 using namespace std;
@@ -28,11 +29,13 @@ int main(int args, char *argv[])
   QTextCodec::setCodecForTr(QTextCodec::codecForName("UTF8"));
 
   QApplication app(args, argv);
-  QApplication::setWindowIcon(QIcon
-			      (QCoreApplication::applicationDirPath() +
-			       "/themes/winicon.png"));
+#ifdef INSTALLATION_PREFIX
+  QApplication::setWindowIcon(QIcon(QString(INSTALLATION_PREFIX) + "/themes/winicon.png"));
+#else
+  QApplication::setWindowIcon(QIcon(QCoreApplication::applicationDirPath() + "/themes/winicon.png"));
+#endif
   QTranslator translator;
-  translator.load(QCoreApplication::applicationDirPath() + "/locale/current");
+  translator.load(QDesktopServices::storageLocation(QDesktopServices::DataLocation) + "/mdd/locale/current");
   app.installTranslator(&translator);
 
   int w = QApplication::desktop()->width();

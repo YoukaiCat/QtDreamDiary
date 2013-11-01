@@ -51,7 +51,7 @@ void settingsDialog::loadConfigData()
   config = &mw->config;
   // opcje logowania:
   Last last;
-  if(last.load(mw->exePath + "/last"))
+  if(last.load(mw->lastLoginPath))
   {
     ui.checkBox_5->setEnabled(true);
     ui.checkBox_4->setCheckState(Qt::Checked);
@@ -182,12 +182,12 @@ void settingsDialog::okButtonClicked()
       last.autologin = true;
     else
       last.autologin = false;
-    last.save(mw->exePath + "/last");
+    last.save(mw->lastLoginPath);
   }
-  else if(last.load(mw->exePath + "/last"))
+  else if(last.load(mw->lastLoginPath))
     if(last.login == mw->username)
-      if(QFile::exists(mw->exePath + "/last"))
-	QFile::remove(mw->exePath + "/last");
+      if(QFile::exists(mw->lastLoginPath))
+	QFile::remove(mw->lastLoginPath);
 
   // ustawienia szyfrowania:
   if(ui.checkBox_2->checkState() == Qt::Checked)
